@@ -525,6 +525,14 @@ extension Defaults.Keys {
     static let enableClaudeCodeMonitor = Key<Bool>("enableClaudeCodeMonitor", default: false)
     static let claudeCodePort = Key<Int>("claudeCodePort", default: 47821)
     static let claudeCodeToken = Key<String>("claudeCodeToken", default: "")
+    // MARK: Teleprompter
+    static let enableTeleprompter = Key<Bool>("enableTeleprompter", default: true)
+    static let teleprompterText = Key<String>(
+        "teleprompterText",
+        default: "Paste your script in Settings > Teleprompter.\n\nIt scrolls right under the camera, so you can read while looking at the lens.\n\nUse the buttons on the right to start, pause and change the speed."
+    )
+    static let teleprompterSpeed = Key<Double>("teleprompterSpeed", default: 40)
+    static let teleprompterFontSize = Key<Double>("teleprompterFontSize", default: 22)
 
     // MARK: Layout
     /// Swaps the opened notch for a smaller, player-only layout: no tab

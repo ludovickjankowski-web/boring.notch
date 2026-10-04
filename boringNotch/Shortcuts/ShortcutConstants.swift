@@ -11,5 +11,6 @@ import SwiftUI
 extension KeyboardShortcuts.Name {
     static let toggleSneakPeek = Self("toggleSneakPeek", initial: .init(.h, modifiers: [.command, .shift]))
     static let togglePomodoro = Self("togglePomodoro")
+    static let toggleTeleprompter = Self("toggleTeleprompter")
     static let toggleNotchOpen = Self("toggleNotchOpen", initial: .init(.i, modifiers: [.command, .shift]))
 }

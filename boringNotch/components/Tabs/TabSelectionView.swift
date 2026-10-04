@@ -18,7 +18,8 @@ struct TabModel: Identifiable {
 let tabs = [
     TabModel(label: "Home", icon: "house.fill", view: .home),
     TabModel(label: "Shelf", icon: "tray.fill", view: .shelf),
-    TabModel(label: "Timer", icon: "timer", view: .timer)
+    TabModel(label: "Timer", icon: "timer", view: .timer),
+    TabModel(label: "Teleprompter", icon: "text.alignleft", view: .teleprompter)
 ]
 
 @MainActor
@@ -28,6 +29,7 @@ var visibleTabs: [TabModel] {
         case .home: return true
         case .shelf: return Defaults[.boringShelf]
         case .timer: return Defaults[.enablePomodoro]
+        case .teleprompter: return Defaults[.enableTeleprompter]
         }
     }
 }

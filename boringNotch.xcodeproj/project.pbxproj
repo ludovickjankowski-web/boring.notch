@@ -142,6 +142,8 @@
 		6A8AF1C81FF4C1415ADCBC4F /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5012AADEC8FBDC79B257A4 /* PomodoroView.swift */; };
 		D35B5CD87886328EAE585477 /* BluetoothAccessoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */; };
 		A638D86E39E0E4771FFE6C43 /* ClaudeCodeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86D4703EC96104395B26D /* ClaudeCodeMonitor.swift */; };
+		2407C4824256B704E4A0F7B2 /* TeleprompterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE44E9B278424C7AF50D8D3 /* TeleprompterManager.swift */; };
+		E1E9543D1D09D6B141A4A289 /* TeleprompterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16694E6F9C4EC7C30C48A528 /* TeleprompterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,6 +317,8 @@
 		CD5012AADEC8FBDC79B257A4 /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
 		EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothAccessoryManager.swift; sourceTree = "<group>"; };
 		47D86D4703EC96104395B26D /* ClaudeCodeMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeCodeMonitor.swift; sourceTree = "<group>"; };
+		9FE44E9B278424C7AF50D8D3 /* TeleprompterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterManager.swift; sourceTree = "<group>"; };
+		16694E6F9C4EC7C30C48A528 /* TeleprompterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -562,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2CF5CA073212E154A2A160 /* Pomodoro */,
+				268D06D4E72D68419CF4E71A /* Teleprompter */,
 				11985BDF2F37A3C800F81585 /* OSD */,
 				B141C23B2CA5F50900AC8CC8 /* Onboarding */,
 				14C08BB72C8DE49E000F8AA0 /* Calendar */,
@@ -585,6 +590,7 @@
 				FAF97A2447F350AB599CED8B /* PomodoroManager.swift */,
 				EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */,
 				47D86D4703EC96104395B26D /* ClaudeCodeMonitor.swift */,
+				9FE44E9B278424C7AF50D8D3 /* TeleprompterManager.swift */,
 				11DB26652EDD0BE1001EA0CF /* LyricsService.swift */,
 				11D58EA12E760AE100FA8377 /* ImageService.swift */,
 				F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */,
@@ -804,6 +810,14 @@
 			path = Pomodoro;
 			sourceTree = "<group>";
 		};
+		268D06D4E72D68419CF4E71A /* Teleprompter */ = {
+			isa = PBXGroup;
+			children = (
+				16694E6F9C4EC7C30C48A528 /* TeleprompterView.swift */,
+			);
+			path = Teleprompter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -994,6 +1008,8 @@
 				B35F18247FA5880E5FCE8357 /* PomodoroManager.swift in Sources */,
 				D35B5CD87886328EAE585477 /* BluetoothAccessoryManager.swift in Sources */,
 				A638D86E39E0E4771FFE6C43 /* ClaudeCodeMonitor.swift in Sources */,
+				E1E9543D1D09D6B141A4A289 /* TeleprompterView.swift in Sources */,
+				2407C4824256B704E4A0F7B2 /* TeleprompterManager.swift in Sources */,
 				115C12EC2ED3D003009754CA /* OpenNotchOSD.swift in Sources */,
 				14C08BB92C8DE4B1000F8AA0 /* BoringCalendar.swift in Sources */,
 				5955950D2E900ED800C66711 /* ApplicationRelauncher.swift in Sources */,

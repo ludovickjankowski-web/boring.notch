@@ -278,6 +278,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
+        // Opens the notch on the Teleprompter tab and starts scrolling, or
+        // toggles play/pause when it's already showing.
+        KeyboardShortcuts.onKeyDown(for: .toggleTeleprompter) { [weak self] in
+            Task { @MainActor [weak self] in
+                guard let self, Defaults[.enableTeleprompter] else { return }
+                let prompter = TeleprompterManager.shared
+                if self.vm.notchState == .open && self.coordinator.currentView == .teleprompter {
+                    prompter.toggle()
+                    return
+                }
+                self.closeNotchTask?.cancel()
+                self.closeNotchTask = nil
+                withAnimation(.smooth) {
+                    self.coordinator.currentView = .teleprompter
+                }
+                _ = self.vm.open()
+                prompter.start()
+            }
+        }
+
         KeyboardShortcuts.onKeyDown(for: .toggleNotchOpen) { [weak self] in
             Task { [weak self] in
                 guard let self = self else { return }
