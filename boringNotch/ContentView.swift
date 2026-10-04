@@ -23,6 +23,7 @@ struct ContentView: View {
     @ObservedObject var batteryModel = BatteryStatusViewModel.shared
     @ObservedObject var brightnessManager = BrightnessManager.shared
     @ObservedObject var volumeManager = VolumeManager.shared
+    @ObservedObject var pomodoro = PomodoroManager.shared
     @State private var hoverTask: Task<Void, Never>?
     @State private var isHovering: Bool = false
     @State private var anyDropDebounceTask: Task<Void, Never>?
@@ -58,6 +59,20 @@ struct ContentView: View {
         )
     }
 
+    private var isMusicActive: Bool {
+        musicManager.isPlaying || !musicManager.isPlayerIdle
+    }
+
+    /// The running timer wins over music; a paused one only shows when nothing is playing.
+    private var showPomodoroActivity: Bool {
+        guard vm.notchState == .closed, !vm.hideOnClosed,
+              Defaults[.enablePomodoro], Defaults[.pomodoroShowInClosedNotch] else { return false }
+        if coordinator.expandingView.show {
+            return coordinator.expandingView.type == .pomodoro
+        }
+        return pomodoro.isRunning || (pomodoro.isActive && !isMusicActive)
+    }
+
     private var computedChinWidth: CGFloat {
         var chinWidth: CGFloat = vm.closedNotchSize.width
 
@@ -65,6 +80,8 @@ struct ContentView: View {
             && vm.notchState == .closed && Defaults[.showPowerStatusNotifications]
         {
             chinWidth = 640
+        } else if showPomodoroActivity {
+            chinWidth += 2 * PomodoroLiveActivity.sideWidth + 20
         } else if (!coordinator.expandingView.show || coordinator.expandingView.type == .music)
             && vm.notchState == .closed && (musicManager.isPlaying || !musicManager.isPlayerIdle)
             && coordinator.musicLiveActivityEnabled && !vm.hideOnClosed
@@ -287,6 +304,9 @@ struct ContentView: View {
                       } else if coordinator.sneakPeek.show && Defaults[.inlineHUD] && (coordinator.sneakPeek.type != .music) && (coordinator.sneakPeek.type != .battery) && vm.notchState == .closed {
                           InlineHUD(type: $coordinator.sneakPeek.type, value: $coordinator.sneakPeek.value, icon: $coordinator.sneakPeek.icon, hoverAnimation: $isHovering, gestureProgress: $gestureProgress)
                               .transition(.opacity)
+                      } else if showPomodoroActivity {
+                          PomodoroLiveActivity()
+                              .transition(.opacity)
                       } else if (!coordinator.expandingView.show || coordinator.expandingView.type == .music) && vm.notchState == .closed && (musicManager.isPlaying || !musicManager.isPlayerIdle) && coordinator.musicLiveActivityEnabled && !vm.hideOnClosed {
                           MusicLiveActivity()
                               .frame(alignment: .center)
@@ -349,6 +369,12 @@ struct ContentView: View {
                         NotchHomeView(albumArtNamespace: albumArtNamespace)
                     case .shelf:
                         ShelfView()
+                    case .timer:
+                        if Defaults[.enablePomodoro] {
+                            PomodoroView()
+                        } else {
+                            NotchHomeView(albumArtNamespace: albumArtNamespace)
+                        }
                     }
                 }
                 .transition(

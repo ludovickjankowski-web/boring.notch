@@ -48,6 +48,9 @@ struct SettingsView: View {
 //                NavigationLink(value: "Downloads") {
 //                    Label("Downloads", systemImage: "square.and.arrow.down")
 //                }
+                NavigationLink(value: "Timer") {
+                    Label("Timer", systemImage: "timer")
+                }
                 NavigationLink(value: "Shelf") {
                     Label("Shelf", systemImage: "books.vertical")
                 }
@@ -83,6 +86,8 @@ struct SettingsView: View {
                     HUD()
                 case "Battery":
                     Charge()
+                case "Timer":
+                    PomodoroSettings()
                 case "Shelf":
                     Shelf()
                 case "Shortcuts":
@@ -1722,6 +1727,64 @@ struct AccentCircleButton: View {
     }
 }
 
+struct PomodoroSettings: View {
+    @Default(.enablePomodoro) var enablePomodoro
+    @Default(.pomodoroFocusMinutes) var focusMinutes
+    @Default(.pomodoroShortBreakMinutes) var shortBreakMinutes
+    @Default(.pomodoroLongBreakMinutes) var longBreakMinutes
+    @Default(.pomodoroSessionsBeforeLongBreak) var sessionsBeforeLongBreak
+
+    var body: some View {
+        Form {
+            Section {
+                Defaults.Toggle(key: .enablePomodoro) {
+                    Text("Enable focus timer")
+                }
+                Defaults.Toggle(key: .pomodoroShowInClosedNotch) {
+                    Text("Show countdown in closed notch")
+                }
+                .disabled(!enablePomodoro)
+            } header: {
+                Text("General")
+            } footer: {
+                Text("Adds a Timer tab to the open notch. A running timer takes priority over the music live activity.")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+            }
+            Section {
+                Stepper(value: $focusMinutes, in: 1...120) {
+                    Text("Focus: \(focusMinutes) min")
+                }
+                Stepper(value: $shortBreakMinutes, in: 1...60) {
+                    Text("Short break: \(shortBreakMinutes) min")
+                }
+                Stepper(value: $longBreakMinutes, in: 1...90) {
+                    Text("Long break: \(longBreakMinutes) min")
+                }
+                Stepper(value: $sessionsBeforeLongBreak, in: 1...12) {
+                    Text("Long break after \(sessionsBeforeLongBreak) sessions")
+                }
+            } header: {
+                Text("Durations")
+            }
+            .disabled(!enablePomodoro)
+            Section {
+                Defaults.Toggle(key: .pomodoroAutoStartNext) {
+                    Text("Automatically start the next phase")
+                }
+                Defaults.Toggle(key: .pomodoroPlaySound) {
+                    Text("Play a sound when a phase ends")
+                }
+            } header: {
+                Text("Behavior")
+            }
+            .disabled(!enablePomodoro)
+        }
+        .accentColor(.effectiveAccent)
+        .navigationTitle("Timer")
+    }
+}
+
 struct Shortcuts: View {
     var body: some View {
         Form {
@@ -1739,6 +1802,11 @@ struct Shortcuts: View {
             }
             Section {
                 KeyboardShortcuts.Recorder("Toggle Notch Open:", name: .toggleNotchOpen)
+            }
+            Section {
+                KeyboardShortcuts.Recorder("Start/Pause Timer:", name: .togglePomodoro)
+            } header: {
+                Text("Timer")
             }
         }
         .accentColor(.effectiveAccent)
