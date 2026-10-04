@@ -389,6 +389,19 @@
         }
       }
     },
+    "%lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+
+    },
     "+%lld" : {
       "localizations" : {
         "de" : {
@@ -897,6 +910,9 @@
         }
       }
     },
+    "Accessories" : {
+
+    },
     "Actual Size" : {
       "localizations" : {
         "es" : {
@@ -1357,6 +1373,9 @@
         }
       }
     },
+    "Adds a Timer tab to the open notch. A running timer sits in front of the music live activity; swipe to switch between them." : {
+      "comment" : "Footer explaining where the focus timer appears."
+    },
     "All Applications" : {
       "localizations" : {
         "es" : {
@@ -1634,28 +1653,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Siempre seguir la pantalla activa"
-          }
-        }
-      }
-    },
-    "Use preferred display" : {
-      "comment" : "Display behavior option: keep the notch on the preferred display.",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Usar la pantalla preferida"
-          }
-        }
-      }
-    },
-    "Automatically switch display if preferred is unavailable" : {
-      "comment" : "Display behavior option: switch to the active display when the preferred display is unavailable.",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cambiar automáticamente a la pantalla activa si la preferida no está disponible"
           }
         }
       }
@@ -2164,6 +2161,9 @@
       },
       "shouldTranslate" : false
     },
+    "Applies to the standard layout; compact mode sizes itself to its content." : {
+      "comment" : "Footer explaining that the open notch size setting does not affect compact mode."
+    },
     "Apps" : {
       "localizations" : {
         "es" : {
@@ -2653,6 +2653,20 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自動下載更新"
+          }
+        }
+      }
+    },
+    "Automatically start the next phase" : {
+
+    },
+    "Automatically switch display if preferred is unavailable" : {
+      "comment" : "Display behavior option: switch to the active display when the preferred display is unavailable.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar automáticamente a la pantalla activa si la preferida no está disponible"
           }
         }
       }
@@ -3489,6 +3503,9 @@
           }
         }
       }
+    },
+    "Bluetooth device" : {
+
     },
     "Boring Notch" : {
       "localizations" : {
@@ -7045,6 +7062,9 @@
         }
       }
     },
+    "Connected" : {
+
+    },
     "Connects directly to the Apple Music app." : {
       "comment" : "Onboarding description of the Apple Music source.",
       "localizations" : {
@@ -9376,6 +9396,9 @@
         }
       }
     },
+    "Disconnected" : {
+
+    },
     "Dismiss notification" : {
       "comment" : "A button that dismisses a notification.",
       "localizations" : {
@@ -9404,6 +9427,9 @@
           }
         }
       }
+    },
+    "Display behavior" : {
+
     },
     "Displays" : {
       "localizations" : {
@@ -9845,6 +9871,9 @@
           }
         }
       }
+    },
+    "Durations" : {
+
     },
     "e.g., 1920" : {
       "localizations" : {
@@ -10308,6 +10337,9 @@
           }
         }
       }
+    },
+    "Enable focus timer" : {
+
     },
     "Enable gestures" : {
       "localizations" : {
@@ -11810,6 +11842,12 @@
         }
       }
     },
+    "Focus" : {
+
+    },
+    "Focus: %lld min" : {
+      "comment" : "Focus session length in minutes."
+    },
     "Format:" : {
       "localizations" : {
         "de" : {
@@ -12868,6 +12906,9 @@
           }
         }
       }
+    },
+    "Height - %@" : {
+      "comment" : "Slider label for the open notch height."
     },
     "Helper Service Unavailable" : {
       "localizations" : {
@@ -14926,6 +14967,16 @@
         }
       }
     },
+    "L %lld%%  R %lld%%" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "L %1$lld%%  R %2$lld%%"
+          }
+        }
+      }
+    },
     "Language" : {
       "localizations" : {
         "de" : {
@@ -15311,6 +15362,15 @@
           }
         }
       }
+    },
+    "Long break" : {
+
+    },
+    "Long break after %lld sessions" : {
+      "comment" : "Number of focus sessions before a long break."
+    },
+    "Long break: %lld min" : {
+      "comment" : "Long break length in minutes."
     },
     "Looking for devices…" : {
       "localizations" : {
@@ -19336,6 +19396,9 @@
         }
       }
     },
+    "Notch width on non-notch displays - %@" : {
+      "comment" : "Slider label for the closed notch width on displays without a hardware notch."
+    },
     "Notifications" : {
       "localizations" : {
         "fr" : {
@@ -20155,6 +20218,9 @@
           }
         }
       }
+    },
+    "Open notch size" : {
+      "comment" : "Settings section header for the open notch dimensions."
     },
     "Open Reminder Settings" : {
       "localizations" : {
@@ -21175,6 +21241,9 @@
           }
         }
       }
+    },
+    "Play a sound when a phase ends" : {
+
     },
     "Play/Pause" : {
       "localizations" : {
@@ -22331,6 +22400,9 @@
           }
         }
       }
+    },
+    "Ready" : {
+
     },
     "Real-time audio waveform" : {
       "localizations" : {
@@ -23682,6 +23754,12 @@
         }
       }
     },
+    "Reset" : {
+
+    },
+    "Reset to default size" : {
+      "comment" : "Button restoring the default open notch size."
+    },
     "Reset to Defaults" : {
       "localizations" : {
         "de" : {
@@ -24063,6 +24141,9 @@
           }
         }
       }
+    },
+    "Running" : {
+
     },
     "Scale corner radius for closed notch" : {
       "localizations" : {
@@ -24695,6 +24776,12 @@
         }
       }
     },
+    "Short break" : {
+
+    },
+    "Short break: %lld min" : {
+      "comment" : "Short break length in minutes."
+    },
     "Shortcuts" : {
       "localizations" : {
         "cs" : {
@@ -25049,6 +25136,9 @@
         }
       }
     },
+    "Show Bluetooth accessory connections" : {
+
+    },
     "Show calendar" : {
       "localizations" : {
         "cs" : {
@@ -25307,6 +25397,9 @@
           }
         }
       }
+    },
+    "Show countdown in closed notch" : {
+
     },
     "Show in Finder" : {
       "comment" : "Context menu item: Show in Finder",
@@ -27055,6 +27148,9 @@
         }
       }
     },
+    "Shows AirPods, headphones, keyboards and mice in the notch when they connect, with their battery level when available. macOS will ask for Bluetooth access." : {
+      "comment" : "Footer for the Bluetooth accessory connection setting."
+    },
     "Shuffle" : {
       "localizations" : {
         "fr" : {
@@ -27110,6 +27206,9 @@
           }
         }
       }
+    },
+    "Skip to next phase" : {
+
     },
     "Slider color" : {
       "localizations" : {
@@ -27906,8 +28005,11 @@
         }
       }
     },
-    "Switch if preferred display is unavailable" : {
-      "comment" : "A toggle that allows the user to have the app automatically switch to a different display when the preferred display becomes unavailable."
+    "Start" : {
+
+    },
+    "Start/Pause Timer:" : {
+
     },
     "System" : {
       "localizations" : {
@@ -28592,6 +28694,9 @@
           }
         }
       }
+    },
+    "Timer" : {
+
     },
     "Tint progress bar with accent color" : {
       "extractionState" : "stale",
@@ -29716,6 +29821,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "喺劉海兩邊顯示"
+          }
+        }
+      }
+    },
+    "Use preferred display" : {
+      "comment" : "Display behavior option: keep the notch on the preferred display.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar la pantalla preferida"
           }
         }
       }
@@ -31179,6 +31295,9 @@
           }
         }
       }
+    },
+    "Width - %@" : {
+      "comment" : "Slider label for the open notch width."
     },
     "Window" : {
       "localizations" : {
