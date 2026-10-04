@@ -287,6 +287,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
+        // Opens the notch on the Assistant tab with the question field focused.
+        KeyboardShortcuts.onKeyDown(for: .openAssistant) { [weak self] in
+            Task { @MainActor [weak self] in
+                guard let self, AssistantManager.shared.isAvailable else { return }
+                self.closeNotchTask?.cancel()
+                self.closeNotchTask = nil
+                withAnimation(.smooth) {
+                    self.coordinator.currentView = .assistant
+                }
+                _ = self.vm.open()
+                AssistantManager.shared.requestFocus()
+            }
+        }
+
         KeyboardShortcuts.onKeyDown(for: .toggleNotchOpen) { [weak self] in
             Task { [weak self] in
                 guard let self = self else { return }

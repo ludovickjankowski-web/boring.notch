@@ -508,6 +508,12 @@ extension Defaults.Keys {
     static let teleprompterSpeed = Key<Double>("teleprompterSpeed", default: 40)
     static let teleprompterFontSize = Key<Double>("teleprompterFontSize", default: 22)
 
+    // MARK: Apple Intelligence
+    static let enableAITeleprompter = Key<Bool>("enableAITeleprompter", default: true)
+    static let enableAIShelf = Key<Bool>("enableAIShelf", default: true)
+    static let enableDailyBrief = Key<Bool>("enableDailyBrief", default: true)
+    static let enableAssistant = Key<Bool>("enableAssistant", default: true)
+
     // MARK: Layout
     /// Swaps the opened notch for a smaller, player-only layout: no tab
     /// bar, calendar or mirror. Off by default so existing users keep the

@@ -36,6 +36,12 @@ struct Strings {
     static let remove = String(localized: "Remove", comment: "Context menu item: Remove")
 }
 
+/// Carries an Apple Intelligence action through NSMenuItem.representedObject.
+final class ShelfIntelligenceMenuMarker: NSObject {
+    let action: ShelfIntelligenceAction
+    init(action: ShelfIntelligenceAction) { self.action = action }
+}
+
 enum ContextMenuAction: String {
     case quickLook
     case open
@@ -207,6 +213,27 @@ static func present(
         menu.addItem(NSMenuItem.separator())
     }
 
+    // Apple Intelligence actions for text, PDFs and documents
+    let intelligenceItems = selectedItems.filter(ShelfIntelligenceService.canProcess)
+    if ShelfIntelligenceService.isEnabled && !intelligenceItems.isEmpty {
+        let intelligence = NSMenuItem(title: String(localized: "Apple Intelligence"), action: nil, keyEquivalent: "")
+        intelligence.image = NSImage(systemSymbolName: "apple.intelligence", accessibilityDescription: nil)
+            ?? NSImage(systemSymbolName: "sparkles", accessibilityDescription: nil)
+        let intelligenceMenu = NSMenu()
+        let actions: [ShelfIntelligenceAction] = [.summarize]
+            + ShelfIntelligenceAction.translationTargets.map { .translate($0) }
+            + [.extractActions]
+        for action in actions {
+            let mi = NSMenuItem(title: action.title, action: nil, keyEquivalent: "")
+            mi.image = NSImage(systemSymbolName: action.icon, accessibilityDescription: nil)
+            mi.representedObject = ShelfIntelligenceMenuMarker(action: action)
+            intelligenceMenu.addItem(mi)
+        }
+        intelligence.submenu = intelligenceMenu
+        menu.addItem(intelligence)
+        menu.addItem(NSMenuItem.separator())
+    }
+
     // Add compression option for files/folders (single or multiple)
     if !selectedFileURLs.isEmpty {
         let compressItem = NSMenuItem(title: Strings.compress, action: nil, keyEquivalent: "")
@@ -310,6 +337,12 @@ private final class MenuActionTarget: NSObject {
     @MainActor @objc func handle(_ sender: NSMenuItem) {
         if let marker = sender.representedObject as? String, marker == "__OTHER__" {
             openWithPanel()
+            return
+        }
+
+        if let marker = sender.representedObject as? ShelfIntelligenceMenuMarker {
+            let selected = ShelfSelectionModel.shared.selectedItems(in: ShelfStateViewModel.shared.items)
+            ShelfIntelligenceService.run(marker.action, on: selected)
             return
         }
 
