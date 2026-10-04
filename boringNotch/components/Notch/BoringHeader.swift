@@ -47,6 +47,10 @@ struct BoringHeader: View {
                         )
                             .transition(.scale(scale: 0.8).combined(with: .opacity))
                     } else {
+                        if Defaults[.showWeather] {
+                            WeatherHeaderButton()
+                                .onAppear { WeatherManager.shared.refreshIfStale() }
+                        }
                         if Defaults[.showMirror] && coordinator.currentView == .home {
                             Button(action: {
                                 vm.toggleCameraPreview()

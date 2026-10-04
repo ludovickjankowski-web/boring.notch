@@ -495,6 +495,14 @@ extension Defaults.Keys {
     static let selectedDownloadIndicatorStyle = Key<DownloadIndicatorStyle>("selectedDownloadIndicatorStyle", default: DownloadIndicatorStyle.progress)
     static let selectedDownloadIconStyle = Key<DownloadIconStyle>("selectedDownloadIconStyle", default: DownloadIconStyle.onlyAppIcon)
 
+    // MARK: Weather
+    static let showWeather = Key<Bool>("showWeather", default: false)
+    static let weatherUseCurrentLocation = Key<Bool>("weatherUseCurrentLocation", default: true)
+    static let weatherCityName = Key<String>("weatherCityName", default: "")
+    static let weatherLatitude = Key<Double>("weatherLatitude", default: 0)
+    static let weatherLongitude = Key<Double>("weatherLongitude", default: 0)
+    static let weatherUnit = Key<WeatherUnit>("weatherUnit", default: .system)
+
     // MARK: OSD
     static let osdReplacement = Key<Bool>(PreferenceCompatibility.migratedKeyName("osdReplacement", from: "hudReplacement"), default: false)
     static let inlineOSD = Key<Bool>(PreferenceCompatibility.migratedKeyName("inlineOSD", from: "inlineHUD"), default: false)

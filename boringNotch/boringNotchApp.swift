@@ -196,6 +196,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         SettingsWindowController.shared.setCamera(camera)
         migrateDisplayModeIfNeeded()
+        // Starts fetching so the forecast is ready the first time the notch opens.
+        _ = WeatherManager.shared
 
         NotificationCenter.default.addObserver(
             self,
