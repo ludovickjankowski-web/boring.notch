@@ -203,6 +203,8 @@ final class PomodoroManager: ObservableObject {
         if Defaults[.enableHaptics] {
             NSHapticFeedbackManager.defaultPerformer.perform(.levelChange, performanceTime: .now)
         }
-        BoringViewCoordinator.shared.toggleExpandingView(status: true, type: .pomodoro)
+        if Defaults[.pomodoroShowInClosedNotch] {
+            BoringViewCoordinator.shared.toggleExpandingView(status: true, type: .pomodoro)
+        }
     }
 }
