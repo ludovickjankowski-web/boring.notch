@@ -38,6 +38,7 @@ struct ContentView: View {
     @Namespace var albumArtNamespace
 
     @Default(.showNotHumanFace) var showNotHumanFace
+    @ObservedObject var claudeCode = ClaudeCodeMonitor.shared
 
     // Use standardized animations from StandardAnimations enum
     private let animationSpring = StandardAnimations.interactive
@@ -113,8 +114,21 @@ struct ContentView: View {
         // The inline song-change peek is drawn inside the music pill, so it
         // has to bring the pill with it even when the persistent live
         // activity is turned off — otherwise the peek never appears.
+        // Sessions that need you (or just finished) jump ahead of music; ones
+        // that are merely working stay one swipe away behind it.
+        let claudeCodeAnnouncing = coordinator.expandingView.show && coordinator.expandingView.type == .claudeCode
+        let showsClaudeCode = Defaults[.enableClaudeCodeMonitor]
+            && (!claudeCode.visibleSessions.isEmpty)
+            && (!coordinator.expandingView.show || claudeCodeAnnouncing)
+        let claudeCodeFirst = claudeCodeAnnouncing || claudeCode.needsAttention
+        if showsClaudeCode && claudeCodeFirst {
+            items.append(.claudeCode)
+        }
         if musicIsShowing || showingInlineMusicPeek {
             items.append(.music)
+        }
+        if showsClaudeCode && !claudeCodeFirst {
+            items.append(.claudeCode)
         }
 
         return items
@@ -212,6 +226,10 @@ struct ContentView: View {
                 if showingInlineMusicPeek {
                     chinWidth += 2 * inlineMusicPeekLabelWidth
                 }
+            case .claudeCode:
+                let announcing = coordinator.expandingView.show && coordinator.expandingView.type == .claudeCode
+                let side = announcing ? ClaudeCodeLiveActivity.announcementWidth : ClaudeCodeLiveActivity.sideWidth
+                chinWidth += 2 * side + 20 + 2 * liveActivityEdgeMargin
             }
         } else if !coordinator.expandingView.show && vm.notchState == .closed
             && (!musicManager.isPlaying && musicManager.isPlayerIdle) && Defaults[.showNotHumanFace]
@@ -478,6 +496,8 @@ struct ContentView: View {
                               case .music:
                                   MusicLiveActivity()
                                       .frame(alignment: .center)
+                              case .claudeCode:
+                                  ClaudeCodeLiveActivity()
                               }
                           }
                       } else if !coordinator.expandingView.show && vm.notchState == .closed && (!musicManager.isPlaying && musicManager.isPlayerIdle) && Defaults[.showNotHumanFace] && !vm.hideOnClosed {

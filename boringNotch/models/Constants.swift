@@ -499,6 +499,11 @@ extension Defaults.Keys {
     static let osdReplacement = Key<Bool>(PreferenceCompatibility.migratedKeyName("osdReplacement", from: "hudReplacement"), default: false)
     static let inlineOSD = Key<Bool>(PreferenceCompatibility.migratedKeyName("inlineOSD", from: "inlineHUD"), default: false)
 
+    // MARK: Claude Code
+    static let enableClaudeCodeMonitor = Key<Bool>("enableClaudeCodeMonitor", default: false)
+    static let claudeCodePort = Key<Int>("claudeCodePort", default: 47821)
+    static let claudeCodeToken = Key<String>("claudeCodeToken", default: "")
+
     // MARK: Layout
     /// Swaps the opened notch for a smaller, player-only layout: no tab
     /// bar, calendar or mirror. Off by default so existing users keep the

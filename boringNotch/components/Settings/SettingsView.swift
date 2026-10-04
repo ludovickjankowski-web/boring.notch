@@ -20,6 +20,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
     case battery
     case osd
     case notifications
+    case claudeCode
     case shortcuts
     case about
 
@@ -42,6 +43,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
         case .battery: "Battery"
         case .osd: "OSD"
         case .notifications: "Notifications"
+        case .claudeCode: "Claude Code"
         case .shortcuts: "Shortcuts"
         case .about: "About"
         }
@@ -59,6 +61,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
         case .battery: .system("battery.100.bolt")
         case .osd: .system("dial.medium.fill")
         case .notifications: .system("bell.badge")
+        case .claudeCode: .system("terminal")
         case .shortcuts: .system("keyboard")
         case .about: .system("info.circle")
         }
@@ -101,6 +104,8 @@ struct SettingsView: View {
                     MediaSettingsView()
                 case .notifications:
                     NotificationSettingsView()
+                case .claudeCode:
+                    ClaudeCodeSettingsView()
                 case .calendar:
                     CalendarSettings()
                 case .osd:
