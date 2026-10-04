@@ -338,6 +338,16 @@
         }
       }
     },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
     "%@x" : {
       "comment" : "Animation speed multiplier.",
       "localizations" : {
@@ -385,6 +395,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld items" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld éléments"
           }
         }
       }
@@ -498,6 +518,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "+%lld"
+          }
+        }
+      }
+    },
+    "A city" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une ville"
           }
         }
       }
@@ -911,7 +941,14 @@
       }
     },
     "Accessories" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accessoires"
+          }
+        }
+      }
     },
     "Actual Size" : {
       "localizations" : {
@@ -1254,6 +1291,36 @@
         }
       }
     },
+    "Add to Shelf" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter à l'étagère"
+          }
+        }
+      }
+    },
+    "Add your script in Settings > Teleprompter." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez votre texte dans Réglages > Prompteur."
+          }
+        }
+      }
+    },
+    "Added" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouté"
+          }
+        }
+      }
+    },
     "Additional features" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1374,7 +1441,15 @@
       }
     },
     "Adds a Timer tab to the open notch. A running timer sits in front of the music live activity; swipe to switch between them." : {
-      "comment" : "Footer explaining where the focus timer appears."
+      "comment" : "Footer explaining where the focus timer appears.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoute un onglet Minuteur à l'encoche ouverte. Un minuteur en cours passe devant l'activité musique ; balayez pour passer de l'un à l'autre."
+          }
+        }
+      }
     },
     "All Applications" : {
       "localizations" : {
@@ -1528,6 +1603,16 @@
         }
       }
     },
+    "Allow" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser"
+          }
+        }
+      }
+    },
     "Allow Access" : {
       "localizations" : {
         "cs" : {
@@ -1646,6 +1731,26 @@
         }
       }
     },
+    "Allow location access in System Settings, or choose a city." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorisez l'accès à la position dans les Réglages Système, ou choisissez une ville."
+          }
+        }
+      }
+    },
+    "Allow or deny tool requests from the notch" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser ou refuser les demandes d'outils depuis l'encoche"
+          }
+        }
+      }
+    },
     "Always follow active display" : {
       "comment" : "A toggle that allows the user to have Boring Notch follow the active display.",
       "localizations" : {
@@ -1653,6 +1758,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Siempre seguir la pantalla activa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toujours suivre l'écran actif"
           }
         }
       }
@@ -1799,6 +1910,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "永遠顯示完整活動標題"
+          }
+        }
+      }
+    },
+    "Always show sneak peek" : {
+      "comment" : "Toggle keeping the song title visible next to the closed notch while music plays.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toujours afficher l'aperçu furtif"
           }
         }
       }
@@ -1997,6 +2119,26 @@
         }
       }
     },
+    "Answer in Terminal" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répondre dans le Terminal"
+          }
+        }
+      }
+    },
+    "Answers come from Apple Intelligence on this Mac. Nothing is sent online." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les réponses viennent d'Apple Intelligence sur ce Mac. Rien n'est envoyé en ligne."
+          }
+        }
+      }
+    },
     "App" : {
       "localizations" : {
         "en" : {
@@ -2149,6 +2291,86 @@
         }
       }
     },
+    "Apple Intelligence" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence"
+          }
+        }
+      }
+    },
+    "Apple Intelligence declined to process this text." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence a refusé de traiter ce texte."
+          }
+        }
+      }
+    },
+    "Apple Intelligence features require macOS 26 or later." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les fonctions Apple Intelligence nécessitent macOS 26 ou ultérieur."
+          }
+        }
+      }
+    },
+    "Apple Intelligence is busy. Try again in a moment." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence est occupé. Réessayez dans un instant."
+          }
+        }
+      }
+    },
+    "Apple Intelligence is not available right now." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence n'est pas disponible pour le moment."
+          }
+        }
+      }
+    },
+    "Apple Intelligence is not available." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence n'est pas disponible."
+          }
+        }
+      }
+    },
+    "Apple Intelligence is ready. Everything runs on this Mac; nothing is sent online." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence est prêt. Tout se fait sur ce Mac ; rien n'est envoyé en ligne."
+          }
+        }
+      }
+    },
+    "Apple Intelligence is working on this Mac…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence travaille sur ce Mac…"
+          }
+        }
+      }
+    },
     "Apple Music" : {
       "comment" : "Apple Music service name.",
       "localizations" : {
@@ -2162,7 +2384,15 @@
       "shouldTranslate" : false
     },
     "Applies to the standard layout; compact mode sizes itself to its content." : {
-      "comment" : "Footer explaining that the open notch size setting does not affect compact mode."
+      "comment" : "Footer explaining that the open notch size setting does not affect compact mode.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S'applique à la disposition standard ; le mode compact s'adapte à son contenu."
+          }
+        }
+      }
     },
     "Apps" : {
       "localizations" : {
@@ -2194,6 +2424,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uygulamalar"
+          }
+        }
+      }
+    },
+    "Ask a question:" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poser une question :"
+          }
+        }
+      }
+    },
+    "Ask anything" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posez une question"
+          }
+        }
+      }
+    },
+    "Ask Apple Intelligence…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demander à Apple Intelligence…"
+          }
+        }
+      }
+    },
+    "Ask quick questions right from the notch. Press Escape or move away to give the keyboard back." : {
+      "comment" : "Footer explaining the notch assistant.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posez des questions rapides depuis l'encoche. Appuyez sur Échap ou éloignez la souris pour rendre le clavier."
+          }
+        }
+      }
+    },
+    "Assistant" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant"
           }
         }
       }
@@ -2658,7 +2939,14 @@
       }
     },
     "Automatically start the next phase" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarrer automatiquement la phase suivante"
+          }
+        }
+      }
     },
     "Automatically switch display if preferred is unavailable" : {
       "comment" : "Display behavior option: switch to the active display when the preferred display is unavailable.",
@@ -2667,6 +2955,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cambiar automáticamente a la pantalla activa si la preferida no está disponible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changer d'écran automatiquement si l'écran préféré n'est pas disponible"
           }
         }
       }
@@ -2786,6 +3080,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自動切換顯示器"
+          }
+        }
+      }
+    },
+    "Back" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reculer"
+          }
+        }
+      }
+    },
+    "Back to start" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenir au début"
           }
         }
       }
@@ -3505,7 +3819,14 @@
       }
     },
     "Bluetooth device" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil Bluetooth"
+          }
+        }
+      }
     },
     "Boring Notch" : {
       "localizations" : {
@@ -4366,6 +4687,16 @@
         }
       }
     },
+    "Calendar event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Événement"
+          }
+        }
+      }
+    },
     "Calendars" : {
       "localizations" : {
         "cs" : {
@@ -4687,6 +5018,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "取消"
+          }
+        }
+      }
+    },
+    "Casual" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détendu"
+          }
+        }
+      }
+    },
+    "Celsius" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celsius"
+          }
+        }
+      }
+    },
+    "Chance of precipitation today" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Risque de précipitations aujourd'hui"
           }
         }
       }
@@ -5461,6 +5822,16 @@
         }
       }
     },
+    "Choose a city in Settings > Weather." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez une ville dans Réglages > Météo."
+          }
+        }
+      }
+    },
     "Choose a Music Source" : {
       "localizations" : {
         "cs" : {
@@ -6148,8 +6519,30 @@
         }
       }
     },
+    "City" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ville"
+          }
+        }
+      }
+    },
+    "Claude Code" : {
+
+    },
+    "Claude Code hooks" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hooks Claude Code"
+          }
+        }
+      }
+    },
     "Clear" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -6645,6 +7038,16 @@
         }
       }
     },
+    "Cloudy" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuageux"
+          }
+        }
+      }
+    },
     "Color Presets" : {
       "localizations" : {
         "de" : {
@@ -7063,7 +7466,14 @@
       }
     },
     "Connected" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connecté"
+          }
+        }
+      }
     },
     "Connects directly to the Apple Music app." : {
       "comment" : "Onboarding description of the Apple Music source.",
@@ -7582,6 +7992,16 @@
         }
       }
     },
+    "Copied" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copié"
+          }
+        }
+      }
+    },
     "Copy" : {
       "comment" : "Context menu item: Copy",
       "localizations" : {
@@ -7703,6 +8123,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "複製"
+          }
+        }
+      }
+    },
+    "Copy configuration" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copier la configuration"
           }
         }
       }
@@ -8007,6 +8437,16 @@
         }
       }
     },
+    "Couldn't search right now." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recherche impossible pour le moment."
+          }
+        }
+      }
+    },
     "Create PDF" : {
       "comment" : "Context menu item: Create PDF",
       "localizations" : {
@@ -8128,6 +8568,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "創建 PDF"
+          }
+        }
+      }
+    },
+    "Current location" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position actuelle"
           }
         }
       }
@@ -8851,6 +9301,16 @@
         }
       }
     },
+    "Daily brief above the calendar" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résumé du jour au-dessus du calendrier"
+          }
+        }
+      }
+    },
     "Default" : {
       "comment" : "Sneak Peek style: Default",
       "localizations" : {
@@ -8995,6 +9455,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Media tuşuna basarken option tuşuna basınca ne olacağını seç."
+          }
+        }
+      }
+    },
+    "Deny" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refuser"
           }
         }
       }
@@ -9397,7 +9867,14 @@
       }
     },
     "Disconnected" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déconnecté"
+          }
+        }
+      }
     },
     "Dismiss notification" : {
       "comment" : "A button that dismisses a notification.",
@@ -9428,8 +9905,25 @@
         }
       }
     },
+    "Display" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affichage"
+          }
+        }
+      }
+    },
     "Display behavior" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comportement de l'affichage"
+          }
+        }
+      }
     },
     "Displays" : {
       "localizations" : {
@@ -9461,6 +9955,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekranlar"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
           }
         }
       }
@@ -9754,6 +10258,16 @@
         }
       }
     },
+    "Drizzle" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bruine"
+          }
+        }
+      }
+    },
     "Drop files here" : {
       "localizations" : {
         "cs" : {
@@ -9873,7 +10387,14 @@
       }
     },
     "Durations" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durées"
+          }
+        }
+      }
     },
     "e.g., 1920" : {
       "localizations" : {
@@ -9905,6 +10426,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "örn. 1920"
+          }
+        }
+      }
+    },
+    "Each session appears as a dot in the closed notch: green while Claude is working, orange when it needs you, blue when it has finished. When Claude asks for permission, the notch opens so you can answer; without an answer it falls back to the terminal." : {
+      "comment" : "Footer explaining the Claude Code session indicators.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque session apparaît sous forme de point dans l'encoche fermée : vert quand Claude travaille, orange quand il a besoin de vous, bleu quand il a terminé. Quand Claude demande une autorisation, l'encoche s'ouvre pour que vous répondiez ; sans réponse, la question repasse dans le terminal."
           }
         }
       }
@@ -10024,6 +10556,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "編輯版面"
+          }
+        }
+      }
+    },
+    "Edit script" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le texte"
           }
         }
       }
@@ -10339,7 +10881,14 @@
       }
     },
     "Enable focus timer" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activer le minuteur de concentration"
+          }
+        }
+      }
     },
     "Enable gestures" : {
       "localizations" : {
@@ -11171,6 +11720,17 @@
         }
       }
     },
+    "Events are only accepted from this Mac, and only with the secret token in the configuration. Regenerating the token requires updating the configuration." : {
+      "comment" : "Footer explaining how the Claude Code hook endpoint is secured.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les événements ne sont acceptés que depuis ce Mac, et uniquement avec le jeton secret de la configuration. Régénérer le jeton oblige à mettre la configuration à jour."
+          }
+        }
+      }
+    },
     "Expanded drag detection area" : {
       "localizations" : {
         "de" : {
@@ -11508,6 +12068,26 @@
         }
       }
     },
+    "Fahrenheit" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fahrenheit"
+          }
+        }
+      }
+    },
+    "Faster" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus vite"
+          }
+        }
+      }
+    },
     "Favorite" : {
       "localizations" : {
         "en-GB" : {
@@ -11549,7 +12129,6 @@
       }
     },
     "Features" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -11573,6 +12152,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Özellikler"
+          }
+        }
+      }
+    },
+    "Feels like %@" : {
+      "comment" : "Apparent temperature.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ressenti %@"
           }
         }
       }
@@ -11679,6 +12269,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "拖入中轉站嘅檔案會透過所選服務分享"
+          }
+        }
+      }
+    },
+    "Find Actions & Dates" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouver actions et dates"
           }
         }
       }
@@ -11843,10 +12443,45 @@
       }
     },
     "Focus" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concentration"
+          }
+        }
+      }
     },
     "Focus: %lld min" : {
-      "comment" : "Focus session length in minutes."
+      "comment" : "Focus session length in minutes.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concentration : %lld min"
+          }
+        }
+      }
+    },
+    "Fog" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brouillard"
+          }
+        }
+      }
+    },
+    "Formal" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formel"
+          }
+        }
+      }
     },
     "Format:" : {
       "localizations" : {
@@ -11878,6 +12513,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Biçim:"
+          }
+        }
+      }
+    },
+    "Forward" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avancer"
           }
         }
       }
@@ -11953,6 +12598,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Çerçeve şekli"
+          }
+        }
+      }
+    },
+    "Freezing drizzle" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bruine verglaçante"
+          }
+        }
+      }
+    },
+    "Freezing rain" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pluie verglaçante"
           }
         }
       }
@@ -12649,6 +13314,17 @@
         }
       }
     },
+    "Glass darkness" : {
+      "comment" : "Slider controlling how dark the Liquid Glass notch background is.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opacité du verre"
+          }
+        }
+      }
+    },
     "Gradient" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -12907,8 +13583,53 @@
         }
       }
     },
+    "H %@  L %@" : {
+      "comment" : "Today's high and low temperatures.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "H %1$@  L %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max %1$@  Min %2$@"
+          }
+        }
+      }
+    },
+    "Heavy rain" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forte pluie"
+          }
+        }
+      }
+    },
+    "Heavy snow" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forte neige"
+          }
+        }
+      }
+    },
     "Height - %@" : {
-      "comment" : "Slider label for the open notch height."
+      "comment" : "Slider label for the open notch height.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hauteur - %@"
+          }
+        }
+      }
     },
     "Helper Service Unavailable" : {
       "localizations" : {
@@ -14046,6 +14767,26 @@
         }
       }
     },
+    "Humidity" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Humidité"
+          }
+        }
+      }
+    },
+    "Idle" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inactif"
+          }
+        }
+      }
+    },
     "Idle state" : {
       "localizations" : {
         "en" : {
@@ -14688,6 +15429,16 @@
         }
       }
     },
+    "Invalid port" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port invalide"
+          }
+        }
+      }
+    },
     "Join %@ meeting" : {
       "localizations" : {
         "fr" : {
@@ -14974,6 +15725,12 @@
             "state" : "new",
             "value" : "L %1$lld%%  R %2$lld%%"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "G %1$lld%%  D %2$lld%%"
+          }
         }
       }
     },
@@ -15077,6 +15834,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Büyük"
+          }
+        }
+      }
+    },
+    "Larger text" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texte plus grand"
           }
         }
       }
@@ -15363,14 +16130,99 @@
         }
       }
     },
+    "Let Claude Code ask in the terminal instead" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laisser Claude Code demander dans le terminal"
+          }
+        }
+      }
+    },
+    "Liquid Glass applies to the open notch; the closed notch stays black to blend with the camera housing." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquid Glass s'applique à l'encoche ouverte ; l'encoche fermée reste noire pour se fondre avec la caméra."
+          }
+        }
+      }
+    },
+    "Liquid Glass background" : {
+      "comment" : "Toggle for the Liquid Glass open notch background.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fond Liquid Glass"
+          }
+        }
+      }
+    },
+    "Liquid Glass requires macOS 26 or later." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquid Glass nécessite macOS 26 ou ultérieur."
+          }
+        }
+      }
+    },
+    "Listening on 127.0.0.1:%@" : {
+      "comment" : "Status shown when the Claude Code hook listener is running.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À l'écoute sur 127.0.0.1:%@"
+          }
+        }
+      }
+    },
+    "Location" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position"
+          }
+        }
+      }
+    },
     "Long break" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause longue"
+          }
+        }
+      }
     },
     "Long break after %lld sessions" : {
-      "comment" : "Number of focus sessions before a long break."
+      "comment" : "Number of focus sessions before a long break.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause longue après %lld sessions"
+          }
+        }
+      }
     },
     "Long break: %lld min" : {
-      "comment" : "Long break length in minutes."
+      "comment" : "Long break length in minutes.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause longue : %lld min"
+          }
+        }
+      }
     },
     "Looking for devices…" : {
       "localizations" : {
@@ -15632,6 +16484,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "低功耗模式"
+          }
+        }
+      }
+    },
+    "Low Power: Off" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Économie d'énergie : désactivée"
+          }
+        }
+      }
+    },
+    "Low Power: On" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Économie d'énergie : activée"
           }
         }
       }
@@ -17200,6 +18072,17 @@
         }
       }
     },
+    "Merge this into ~/.claude/settings.json, then restart your Claude Code sessions:" : {
+      "comment" : "Instruction above the Claude Code hooks configuration.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez ceci à ~/.claude/settings.json, puis relancez vos sessions Claude Code :"
+          }
+        }
+      }
+    },
     "Mic" : {
       "localizations" : {
         "cs" : {
@@ -17515,6 +18398,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "鏡子"
+          }
+        }
+      }
+    },
+    "More requests are waiting" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D'autres demandes attendent"
+          }
+        }
+      }
+    },
+    "Mostly clear" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plutôt dégagé"
           }
         }
       }
@@ -17980,6 +18883,16 @@
         }
       }
     },
+    "Needs you" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous attend"
+          }
+        }
+      }
+    },
     "Never hide" : {
       "localizations" : {
         "cs" : {
@@ -18094,6 +19007,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "永不隱藏"
+          }
+        }
+      }
+    },
+    "New conversation" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouvelle conversation"
           }
         }
       }
@@ -18228,6 +19151,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "冇操作"
+          }
+        }
+      }
+    },
+    "No actions or dates found." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune action ni date trouvée."
           }
         }
       }
@@ -19397,7 +20330,35 @@
       }
     },
     "Notch width on non-notch displays - %@" : {
-      "comment" : "Slider label for the closed notch width on displays without a hardware notch."
+      "comment" : "Slider label for the closed notch width on displays without a hardware notch.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largeur de l'encoche sur les écrans sans encoche - %@"
+          }
+        }
+      }
+    },
+    "Notes to script" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes → texte"
+          }
+        }
+      }
+    },
+    "Nothing left on your calendar today." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus rien dans votre calendrier aujourd'hui."
+          }
+        }
+      }
     },
     "Notifications" : {
       "localizations" : {
@@ -19831,6 +20792,16 @@
         }
       }
     },
+    "Open and start/pause:" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir et lancer/mettre en pause :"
+          }
+        }
+      }
+    },
     "Open Calendar Settings" : {
       "localizations" : {
         "cs" : {
@@ -20220,7 +21191,15 @@
       }
     },
     "Open notch size" : {
-      "comment" : "Settings section header for the open notch dimensions."
+      "comment" : "Settings section header for the open notch dimensions.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille de l'encoche ouverte"
+          }
+        }
+      }
     },
     "Open Reminder Settings" : {
       "localizations" : {
@@ -21023,6 +22002,26 @@
         }
       }
     },
+    "Overcast" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couvert"
+          }
+        }
+      }
+    },
+    "Partly cloudy" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partiellement nuageux"
+          }
+        }
+      }
+    },
     "Pause" : {
       "localizations" : {
         "fr" : {
@@ -21243,7 +22242,14 @@
       }
     },
     "Play a sound when a phase ends" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer un son à la fin d'une phase"
+          }
+        }
+      }
     },
     "Play/Pause" : {
       "localizations" : {
@@ -21561,6 +22567,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已插入"
+          }
+        }
+      }
+    },
+    "Port" : {
+      "comment" : "Local port the Claude Code hooks send events to.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
           }
         }
       }
@@ -22401,8 +23418,25 @@
         }
       }
     },
+    "Rain" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pluie"
+          }
+        }
+      }
+    },
     "Ready" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prêt"
+          }
+        }
+      }
     },
     "Real-time audio waveform" : {
       "localizations" : {
@@ -22498,6 +23532,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Önerilen Uygulamalar"
+          }
+        }
+      }
+    },
+    "Regenerate token" : {
+      "comment" : "Button creating a new secret for the Claude Code hooks.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Régénérer le jeton"
           }
         }
       }
@@ -22734,6 +23779,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "記住上一個標籤頁"
+          }
+        }
+      }
+    },
+    "Reminder" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappel"
           }
         }
       }
@@ -23358,6 +24413,16 @@
         }
       }
     },
+    "Removed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimé"
+          }
+        }
+      }
+    },
     "Rename" : {
       "comment" : "Context menu item: Rename",
       "localizations" : {
@@ -23755,10 +24820,25 @@
       }
     },
     "Reset" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser"
+          }
+        }
+      }
     },
     "Reset to default size" : {
-      "comment" : "Button restoring the default open notch size."
+      "comment" : "Button restoring the default open notch size.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenir à la taille par défaut"
+          }
+        }
+      }
     },
     "Reset to Defaults" : {
       "localizations" : {
@@ -24142,8 +25222,25 @@
         }
       }
     },
+    "Rewriting…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réécriture…"
+          }
+        }
+      }
+    },
     "Running" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours"
+          }
+        }
+      }
     },
     "Scale corner radius for closed notch" : {
       "localizations" : {
@@ -24217,6 +25314,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隱藏劉海模式下圓角自適應縮放"
+          }
+        }
+      }
+    },
+    "Script" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texte"
+          }
+        }
+      }
+    },
+    "Script assistant in Teleprompter settings" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant d'écriture dans les réglages du prompteur"
+          }
+        }
+      }
+    },
+    "Search for a city" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher une ville"
           }
         }
       }
@@ -24411,6 +25538,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "揀邊個程序嚟負責系統控制。 BetterDisplay 同 Lunar 都需要各自嘅 app 已經安裝同埋正喺運行。"
+          }
+        }
+      }
+    },
+    "Send" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer"
           }
         }
       }
@@ -24776,11 +25913,37 @@
         }
       }
     },
+    "Shelf actions are in the item's right-click menu. The daily brief needs calendar access." : {
+      "comment" : "Footer explaining where Apple Intelligence features appear.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les actions de l'étagère sont dans le menu du clic droit. Le résumé du jour nécessite l'accès au calendrier."
+          }
+        }
+      }
+    },
     "Short break" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause courte"
+          }
+        }
+      }
     },
     "Short break: %lld min" : {
-      "comment" : "Short break length in minutes."
+      "comment" : "Short break length in minutes.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause courte : %lld min"
+          }
+        }
+      }
     },
     "Shortcuts" : {
       "localizations" : {
@@ -24896,6 +26059,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "快捷方式"
+          }
+        }
+      }
+    },
+    "Shorten" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raccourcir"
+          }
+        }
+      }
+    },
+    "Show Assistant tab" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher l'onglet Assistant"
           }
         }
       }
@@ -25137,7 +26320,14 @@
       }
     },
     "Show Bluetooth accessory connections" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les connexions des accessoires Bluetooth"
+          }
+        }
+      }
     },
     "Show calendar" : {
       "localizations" : {
@@ -25286,6 +26476,16 @@
         }
       }
     },
+    "Show Claude Code sessions in the notch" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les sessions Claude Code dans l'encoche"
+          }
+        }
+      }
+    },
     "Show cool face animation while inactive" : {
       "localizations" : {
         "de" : {
@@ -25399,7 +26599,14 @@
       }
     },
     "Show countdown in closed notch" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher le compte à rebours dans l'encoche fermée"
+          }
+        }
+      }
     },
     "Show in Finder" : {
       "comment" : "Context menu item: Show in Finder",
@@ -27120,6 +28327,26 @@
         }
       }
     },
+    "Show Teleprompter tab" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher l'onglet Prompteur"
+          }
+        }
+      }
+    },
+    "Show weather in the open notch" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher la météo dans l'encoche ouverte"
+          }
+        }
+      }
+    },
     "Shows a smaller opened notch with just the music player — no tabs, calendar or mirror." : {
       "localizations" : {
         "fr" : {
@@ -27149,7 +28376,15 @@
       }
     },
     "Shows AirPods, headphones, keyboards and mice in the notch when they connect, with their battery level when available. macOS will ask for Bluetooth access." : {
-      "comment" : "Footer for the Bluetooth accessory connection setting."
+      "comment" : "Footer for the Bluetooth accessory connection setting.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affiche les AirPods, casques, claviers et souris dans l'encoche quand ils se connectent, avec leur niveau de batterie si disponible. macOS demandera l'accès au Bluetooth."
+          }
+        }
+      }
     },
     "Shuffle" : {
       "localizations" : {
@@ -27208,7 +28443,14 @@
       }
     },
     "Skip to next phase" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer à la phase suivante"
+          }
+        }
+      }
     },
     "Slider color" : {
       "localizations" : {
@@ -27328,6 +28570,16 @@
         }
       }
     },
+    "Slower" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus lent"
+          }
+        }
+      }
+    },
     "Small" : {
       "localizations" : {
         "fr" : {
@@ -27352,6 +28604,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Küçük"
+          }
+        }
+      }
+    },
+    "Smaller text" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texte plus petit"
+          }
+        }
+      }
+    },
+    "Sneak peek duration" : {
+      "comment" : "How long the song-change sneak peek stays visible.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée de l'aperçu furtif"
           }
         }
       }
@@ -27588,6 +28861,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "短暫預覽樣式"
+          }
+        }
+      }
+    },
+    "Snow" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neige"
           }
         }
       }
@@ -27829,6 +29112,17 @@
         }
       }
     },
+    "Speed - %lld" : {
+      "comment" : "Teleprompter scroll speed in points per second.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitesse - %lld"
+          }
+        }
+      }
+    },
     "Spotify" : {
       "comment" : "Spotify service name.",
       "localizations" : {
@@ -28006,10 +29300,64 @@
       }
     },
     "Start" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarrer"
+          }
+        }
+      }
     },
     "Start/Pause Timer:" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancer/mettre en pause le minuteur :"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "État"
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrêter"
+          }
+        }
+      }
+    },
+    "Summarize" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résumer"
+          }
+        }
+      }
+    },
+    "Summarize, translate and find actions in shelf items" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résumer, traduire et trouver les actions dans l'étagère"
+          }
+        }
+      }
     },
     "System" : {
       "localizations" : {
@@ -28390,6 +29738,37 @@
         }
       }
     },
+    "Teleprompter" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prompteur"
+          }
+        }
+      }
+    },
+    "Text size - %lld" : {
+      "comment" : "Teleprompter font size.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille du texte - %lld"
+          }
+        }
+      }
+    },
+    "The Apple Intelligence model is still downloading. Try again later." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le modèle Apple Intelligence est encore en cours de téléchargement. Réessayez plus tard."
+          }
+        }
+      }
+    },
     "The background helper crashed or was closed by macOS. It restarts automatically on the next OSD event." : {
       "localizations" : {
         "fr" : {
@@ -28414,6 +29793,88 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Arka planda çalışan yardımcı süreç kapandı ya da macOS tarafından sonlandırıldı. Sıradaki OSD olayında kendiliğinden yeniden başlayacaktır."
+          }
+        }
+      }
+    },
+    "The current temperature appears next to the battery. Click it for the forecast. Weather data comes from Open-Meteo." : {
+      "comment" : "Footer explaining the weather feature.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La température s'affiche à côté de la batterie. Cliquez dessus pour les prévisions. Données météo : Open-Meteo."
+          }
+        }
+      }
+    },
+    "The script scrolls right under the camera, so you can read it while looking at the lens. The notch stays open while it scrolls." : {
+      "comment" : "Footer explaining the teleprompter.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le texte défile juste sous la caméra : vous lisez en regardant l'objectif. L'encoche reste ouverte pendant le défilement."
+          }
+        }
+      }
+    },
+    "The text is too long for the on-device model." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le texte est trop long pour le modèle sur l'appareil."
+          }
+        }
+      }
+    },
+    "There is no text to work with." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il n'y a aucun texte à traiter."
+          }
+        }
+      }
+    },
+    "This language isn't supported by Apple Intelligence yet." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette langue n'est pas encore prise en charge par Apple Intelligence."
+          }
+        }
+      }
+    },
+    "This Mac doesn't support Apple Intelligence." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce Mac ne prend pas en charge Apple Intelligence."
+          }
+        }
+      }
+    },
+    "Thunderstorm" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orage"
+          }
+        }
+      }
+    },
+    "Thunderstorm with hail" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orage avec grêle"
           }
         }
       }
@@ -28696,7 +30157,14 @@
       }
     },
     "Timer" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuteur"
+          }
+        }
+      }
     },
     "Tint progress bar with accent color" : {
       "extractionState" : "stale",
@@ -29047,6 +30515,46 @@
         }
       }
     },
+    "Translate" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduire"
+          }
+        }
+      }
+    },
+    "Translate to %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduire en %@"
+          }
+        }
+      }
+    },
+    "Translating…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduction…"
+          }
+        }
+      }
+    },
+    "Turn on Apple Intelligence in System Settings to use these features." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activez Apple Intelligence dans les Réglages Système pour utiliser ces fonctions."
+          }
+        }
+      }
+    },
     "Two-finger swipe up on notch to close, two-finger swipe down on notch to open when **Open notch on hover** option is disabled" : {
       "localizations" : {
         "cs" : {
@@ -29161,6 +30669,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "鼠標懸停在劉海上時，雙指上滑關閉劉海，下滑開啟劉海"
+          }
+        }
+      }
+    },
+    "Undo" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
           }
         }
       }
@@ -29280,6 +30798,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "卸載"
+          }
+        }
+      }
+    },
+    "Units" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unités"
           }
         }
       }
@@ -29508,6 +31036,16 @@
         }
       }
     },
+    "Unplugged" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Débranché"
+          }
+        }
+      }
+    },
     "Update channel" : {
       "comment" : "Software updates channel picker label",
       "localizations" : {
@@ -29527,6 +31065,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güncelleme kanalı"
+          }
+        }
+      }
+    },
+    "Updated %@ · Open-Meteo" : {
+      "comment" : "Weather data timestamp and source.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mis à jour à %@ · Open-Meteo"
           }
         }
       }
@@ -29832,6 +31381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usar la pantalla preferida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser l'écran préféré"
           }
         }
       }
@@ -30965,6 +32520,37 @@
         }
       }
     },
+    "wants to use %@" : {
+      "comment" : "Claude Code permission prompt, e.g. 'wants to use Bash'.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "veut utiliser %@"
+          }
+        }
+      }
+    },
+    "Weather" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Météo"
+          }
+        }
+      }
+    },
+    "Weather is unavailable right now." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Météo indisponible pour le moment."
+          }
+        }
+      }
+    },
     "Week starts on" : {
       "comment" : "Calendar setting: which weekday the week strip starts on",
       "localizations" : {
@@ -31297,7 +32883,25 @@
       }
     },
     "Width - %@" : {
-      "comment" : "Slider label for the open notch width."
+      "comment" : "Slider label for the open notch width.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largeur - %@"
+          }
+        }
+      }
+    },
+    "Wind" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent"
+          }
+        }
+      }
     },
     "Window" : {
       "localizations" : {
@@ -31323,6 +32927,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pencere"
+          }
+        }
+      }
+    },
+    "Working" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours"
           }
         }
       }
@@ -31364,6 +32978,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tarayıcılar dahil çoğu medya uygulamasıyla çalışarak neyin çalındığını algılar. Not: Bu özellik gelecekteki bir macOS sürümünde kaldırılabilir."
+          }
+        }
+      }
+    },
+    "Write a few notes, then turn them into a script you can read aloud. Everything runs on this Mac." : {
+      "comment" : "Footer explaining the teleprompter script assistant.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notez quelques idées, puis transformez-les en texte à lire à voix haute. Tout se fait sur ce Mac."
           }
         }
       }
