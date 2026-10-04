@@ -520,12 +520,17 @@ struct ContentView: View {
                             .transition(.opacity.combined(with: .scale(scale: 0.96, anchor: .top)))
                     } else if coordinator.expandingView.type == .battery && coordinator.expandingView.show
                         && vm.notchState == .closed && Defaults[.showPowerStatusNotifications] {
+                        // Equal sides keep the black centre under the physical notch,
+                        // however long the (translated) label is.
+                        let sideWidth = max(76, (computedChinWidth - vm.closedNotchSize.width - 10) / 2)
                         HStack(spacing: 0) {
-                            HStack {
-                                Text(batteryModel.statusText)
-                                    .font(.subheadline)
-                                    .foregroundStyle(.white)
-                            }
+                            Text(batteryModel.statusText)
+                                .font(.subheadline)
+                                .foregroundStyle(.white)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.75)
+                                .padding(.leading, 14)
+                                .frame(width: sideWidth, alignment: .leading)
 
                             Rectangle()
                                 .fill(.black)
@@ -542,7 +547,8 @@ struct ContentView: View {
                                     isForNotification: true
                                 )
                             }
-                            .frame(width: 76, alignment: .trailing)
+                            .padding(.trailing, 14)
+                            .frame(width: sideWidth, alignment: .trailing)
                         }
                         .frame(height: displayClosedNotchHeight, alignment: .center)
                         } else if showBluetoothActivity {
