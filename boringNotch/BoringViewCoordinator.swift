@@ -20,6 +20,7 @@ enum SneakContentType {
     case download
     case pomodoro
     case bluetooth
+    case claudeCode
 }
 
 struct SneakPeekState {

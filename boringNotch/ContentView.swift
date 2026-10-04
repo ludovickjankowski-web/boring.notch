@@ -45,6 +45,7 @@ struct ContentView: View {
     @Default(.openNotchHeight) var openNotchHeightSetting
     @Default(.liquidGlassNotch) var liquidGlassNotch
     @Default(.liquidGlassTint) var liquidGlassTint
+    @ObservedObject var claudeCode = ClaudeCodeMonitor.shared
 
     // Use standardized animations from StandardAnimations enum
     private let animationSpring = StandardAnimations.interactive
@@ -142,6 +143,16 @@ struct ContentView: View {
         let timerIsShowing = showsPomodoroActivity
         let timerFirst = pomodoro.isRunning
             || (coordinator.expandingView.show && coordinator.expandingView.type == .pomodoro)
+        // Sessions that need you (or just finished) jump ahead of music; ones
+        // that are merely working stay one swipe away behind it.
+        let claudeCodeAnnouncing = coordinator.expandingView.show && coordinator.expandingView.type == .claudeCode
+        let showsClaudeCode = Defaults[.enableClaudeCodeMonitor]
+            && (!claudeCode.visibleSessions.isEmpty)
+            && (!coordinator.expandingView.show || claudeCodeAnnouncing)
+        let claudeCodeFirst = claudeCodeAnnouncing || claudeCode.needsAttention
+        if showsClaudeCode && claudeCodeFirst {
+            items.append(.claudeCode)
+        }
         if timerIsShowing && timerFirst {
             items.append(.pomodoro)
         }
@@ -150,6 +161,9 @@ struct ContentView: View {
         }
         if timerIsShowing && !timerFirst {
             items.append(.pomodoro)
+        }
+        if showsClaudeCode && !claudeCodeFirst {
+            items.append(.claudeCode)
         }
 
         return items
@@ -268,6 +282,10 @@ struct ContentView: View {
                 }
             case .pomodoro:
                 chinWidth += 2 * PomodoroLiveActivity.sideWidth + 20 + 2 * liveActivityEdgeMargin
+            case .claudeCode:
+                let announcing = coordinator.expandingView.show && coordinator.expandingView.type == .claudeCode
+                let side = announcing ? ClaudeCodeLiveActivity.announcementWidth : ClaudeCodeLiveActivity.sideWidth
+                chinWidth += 2 * side + 20 + 2 * liveActivityEdgeMargin
             }
         } else if !coordinator.expandingView.show && vm.notchState == .closed
             && (!musicManager.isPlaying && musicManager.isPlayerIdle) && Defaults[.showNotHumanFace]
@@ -539,6 +557,8 @@ struct ContentView: View {
                                       .frame(alignment: .center)
                               case .pomodoro:
                                   PomodoroLiveActivity()
+                              case .claudeCode:
+                                  ClaudeCodeLiveActivity()
                               }
                           }
                       } else if !coordinator.expandingView.show && vm.notchState == .closed && (!musicManager.isPlaying && musicManager.isPlayerIdle) && Defaults[.showNotHumanFace] && !vm.hideOnClosed {

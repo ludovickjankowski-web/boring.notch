@@ -24,12 +24,14 @@ enum LiveActivityItem: Identifiable, Equatable {
     case notification(SystemNotification)
     case music
     case pomodoro
+    case claudeCode
 
     var id: String {
         switch self {
         case .notification(let notification): "notification-\(notification.id)"
         case .music: "music"
         case .pomodoro: "pomodoro"
+        case .claudeCode: "claudeCode"
         }
     }
 }

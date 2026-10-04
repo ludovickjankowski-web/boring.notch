@@ -196,6 +196,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Starts listening for accessory connections when enabled in Settings.
         _ = BluetoothAccessoryManager.shared
+        // Starts the hook listener when Claude Code monitoring is enabled.
+        _ = ClaudeCodeMonitor.shared
         SettingsWindowController.shared.setCamera(camera)
         migrateDisplayModeIfNeeded()
 

@@ -521,6 +521,10 @@ extension Defaults.Keys {
     static let pomodoroShowInClosedNotch = Key<Bool>("pomodoroShowInClosedNotch", default: true)
     // MARK: Bluetooth accessories
     static let showBluetoothAccessories = Key<Bool>("showBluetoothAccessories", default: false)
+    // MARK: Claude Code
+    static let enableClaudeCodeMonitor = Key<Bool>("enableClaudeCodeMonitor", default: false)
+    static let claudeCodePort = Key<Int>("claudeCodePort", default: 47821)
+    static let claudeCodeToken = Key<String>("claudeCodeToken", default: "")
 
     // MARK: Layout
     /// Swaps the opened notch for a smaller, player-only layout: no tab
