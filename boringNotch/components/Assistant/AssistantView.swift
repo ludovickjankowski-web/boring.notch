@@ -98,6 +98,10 @@ struct AssistantView: View {
                 .background(Color.white.opacity(0.14), in: RoundedRectangle(cornerRadius: 10))
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .textSelection(.enabled)
+        case .action:
+            if let action = message.action {
+                actionCard(action, messageID: message.id)
+            }
         case .assistant:
             Group {
                 if message.text.isEmpty {
@@ -111,6 +115,39 @@ struct AssistantView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    private func actionCard(_ action: AssistantAction, messageID: UUID) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: action.undone ? "arrow.uturn.backward.circle" : (action.kind == .reminder ? "checklist" : "calendar.badge.plus"))
+                .foregroundStyle(action.undone ? .gray : .green)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(action.title)
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(action.undone ? .gray : .white)
+                    .strikethrough(action.undone)
+                    .lineLimit(1)
+                Text(action.undone
+                     ? String(localized: "Removed")
+                     : (action.kind == .reminder ? String(localized: "Reminder") : String(localized: "Calendar event"))
+                        + (action.when.isEmpty ? "" : " · \(action.when)"))
+                    .font(.system(size: 10))
+                    .foregroundStyle(.gray)
+                    .lineLimit(1)
+            }
+            Spacer(minLength: 4)
+            if !action.undone {
+                Button("Undo") { assistant.undo(messageID) }
+                    .buttonStyle(.plain)
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(Capsule().fill(Color.white.opacity(0.14)))
+            }
+        }
+        .padding(8)
+        .background(Color.white.opacity(0.06), in: RoundedRectangle(cornerRadius: 10))
     }
 
     private static func markdown(_ text: String) -> AttributedString {
