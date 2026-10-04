@@ -11,6 +11,7 @@ import Combine
 import Defaults
 import Foundation
 import Network
+import OSLog
 import SwiftUI
 
 enum ClaudeCodeSessionState: Equatable {
@@ -38,6 +39,9 @@ final class ClaudeCodeMonitor: ObservableObject {
 
     @Published private(set) var sessions: [ClaudeCodeSession] = []
     @Published private(set) var listenerError: String?
+    @Published private(set) var isListening = false
+
+    private static let log = Logger(subsystem: "theboringteam.boringnotch", category: "ClaudeCode")
 
     private var listener: NWListener?
     private var expiryTask: Task<Void, Never>?
@@ -126,6 +130,8 @@ final class ClaudeCodeMonitor: ObservableObject {
         listener?.cancel()
         listener = nil
         listenerError = nil
+        isListening = false
+        Self.log.info("restart: enabled=\(Defaults[.enableClaudeCodeMonitor]) port=\(Defaults[.claudeCodePort])")
         guard Defaults[.enableClaudeCodeMonitor] else {
             sessions.removeAll()
             return
@@ -145,16 +151,31 @@ final class ClaudeCodeMonitor: ObservableObject {
                 Task { @MainActor in ClaudeCodeMonitor.shared.accept(connection) }
             }
             listener.stateUpdateHandler = { state in
-                Task { @MainActor in
-                    if case .failed(let error) = state {
-                        ClaudeCodeMonitor.shared.listenerError = error.localizedDescription
-                    }
-                }
+                Task { @MainActor in ClaudeCodeMonitor.shared.listenerStateChanged(state) }
             }
             listener.start(queue: .main)
             self.listener = listener
         } catch {
+            Self.log.error("listener creation failed: \(error.localizedDescription)")
             listenerError = error.localizedDescription
+        }
+    }
+
+    private func listenerStateChanged(_ state: NWListener.State) {
+        Self.log.info("listener state: \(String(describing: state))")
+        switch state {
+        case .ready:
+            isListening = true
+            listenerError = nil
+        case .waiting(let error), .failed(let error):
+            // `.waiting` is what a refused bind (e.g. port in use) usually looks like,
+            // so surface it instead of silently never listening.
+            isListening = false
+            listenerError = error.localizedDescription
+        case .cancelled:
+            isListening = false
+        default:
+            break
         }
     }
 
