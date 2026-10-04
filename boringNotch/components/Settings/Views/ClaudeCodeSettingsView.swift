@@ -21,10 +21,19 @@ struct ClaudeCodeSettingsView: View {
                 Defaults.Toggle(key: .enableClaudeCodeMonitor) {
                     Text("Show Claude Code sessions in the notch")
                 }
-                if let error = monitor.listenerError, enabled {
-                    Label(error, systemImage: "exclamationmark.triangle.fill")
-                        .foregroundStyle(.orange)
+                if enabled {
+                    if let error = monitor.listenerError {
+                        Label(error, systemImage: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.orange)
+                            .font(.caption)
+                    } else if monitor.isListening {
+                        Label {
+                            Text("Listening on 127.0.0.1:\(String(port))", comment: "Status shown when the Claude Code hook listener is running.")
+                        } icon: {
+                            Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
+                        }
                         .font(.caption)
+                    }
                 }
             } header: {
                 Text("General")
