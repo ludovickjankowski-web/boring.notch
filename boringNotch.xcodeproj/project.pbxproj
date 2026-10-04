@@ -153,6 +153,7 @@
 		580E8310E7E343CCAFA64353 /* AssistantTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC119E6D50147CA94A58F70 /* AssistantTools.swift */; };
 		E059274741244B2F8B7BCEAC /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE32F3126C241D3AEC38915 /* WeatherManager.swift */; };
 		C0A0510292354855A2859E2D /* WeatherViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937447C27B024C07BB993FD8 /* WeatherViews.swift */; };
+		A330CD0EA12B4CD187E237FA /* PowerStatusNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B78717F39D486190A1E34C /* PowerStatusNotice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -337,6 +338,7 @@
 		5DC119E6D50147CA94A58F70 /* AssistantTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantTools.swift; sourceTree = "<group>"; };
 		CBE32F3126C241D3AEC38915 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		937447C27B024C07BB993FD8 /* WeatherViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViews.swift; sourceTree = "<group>"; };
+		D8B78717F39D486190A1E34C /* PowerStatusNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerStatusNotice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -809,6 +811,7 @@
 			isa = PBXGroup;
 			children = (
 				5D9E720246174C00863527CB /* ContentView+SneakPeek.swift */,
+				D8B78717F39D486190A1E34C /* PowerStatusNotice.swift */,
 				AA01NLA22E7A0001 /* NotificationLiveActivity.swift */,
 				AA06CHV22E7A0001 /* CompactHomeView.swift */,
 				AA04LAS22E7A0001 /* LiveActivityStack.swift */,
@@ -1118,6 +1121,7 @@
 				1153BD8F2D986B1F00979FB0 /* MediaControllerProtocol.swift in Sources */,
 				11985BF42F38520A00F81585 /* DraggableProgressBar.swift in Sources */,
 				B694BA00A2EB492AB0C558A3 /* ContentView+SneakPeek.swift in Sources */,
+				A330CD0EA12B4CD187E237FA /* PowerStatusNotice.swift in Sources */,
 				9AB0C6BD2C73C9CB00F7CD30 /* NotchHomeView.swift in Sources */,
 				B172AAC02C95DA0B001623F1 /* InlineOSD.swift in Sources */,
 				1153BD912D986DB300979FB0 /* PlaybackState.swift in Sources */,

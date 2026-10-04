@@ -520,37 +520,7 @@ struct ContentView: View {
                             .transition(.opacity.combined(with: .scale(scale: 0.96, anchor: .top)))
                     } else if coordinator.expandingView.type == .battery && coordinator.expandingView.show
                         && vm.notchState == .closed && Defaults[.showPowerStatusNotifications] {
-                        // Equal sides keep the black centre under the physical notch,
-                        // however long the (translated) label is.
-                        let sideWidth = max(76, (computedChinWidth - vm.closedNotchSize.width - 10) / 2)
-                        HStack(spacing: 0) {
-                            Text(batteryModel.statusText)
-                                .font(.subheadline)
-                                .foregroundStyle(.white)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.75)
-                                .padding(.leading, 14)
-                                .frame(width: sideWidth, alignment: .leading)
-
-                            Rectangle()
-                                .fill(.black)
-                                .frame(width: vm.closedNotchSize.width + 10)
-
-                            HStack {
-                                BoringBatteryView(
-                                    batteryWidth: 30,
-                                    isCharging: batteryModel.isCharging,
-                                    isInLowPowerMode: batteryModel.isInLowPowerMode,
-                                    isPluggedIn: batteryModel.isPluggedIn,
-                                    levelBattery: batteryModel.levelBattery,
-                                    maxAdapterWatts: batteryModel.maxAdapterWatts,
-                                    isForNotification: true
-                                )
-                            }
-                            .padding(.trailing, 14)
-                            .frame(width: sideWidth, alignment: .trailing)
-                        }
-                        .frame(height: displayClosedNotchHeight, alignment: .center)
+                        PowerStatusNotice(notchWidth: vm.closedNotchSize.width, height: displayClosedNotchHeight)
                         } else if showBluetoothActivity {
                             BluetoothAccessoryView()
                                 .transition(.opacity.combined(with: .scale(scale: 0.9)))
