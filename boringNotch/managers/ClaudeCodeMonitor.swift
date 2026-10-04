@@ -21,6 +21,25 @@ enum ClaudeCodeSessionState: Equatable {
     case idle
 }
 
+/// A tool call waiting for the user to allow or deny it from the notch. The hook's
+/// HTTP request is held open until then; the decision is its response.
+struct ClaudeCodePermissionRequest: Identifiable, Equatable {
+    let id = UUID()
+    let sessionID: String
+    let project: String
+    let toolName: String
+    /// The most telling argument: the command, file, URL, or query.
+    let detail: String
+    let receivedAt = Date()
+}
+
+enum ClaudeCodePermissionDecision {
+    case allow
+    case deny
+    /// Let Claude Code show its usual prompt in the terminal.
+    case askInTerminal
+}
+
 struct ClaudeCodeSession: Identifiable, Equatable {
     let id: String
     var project: String
@@ -35,11 +54,21 @@ final class ClaudeCodeMonitor: ObservableObject {
     /// How long a finished session stays visible in the notch.
     static let doneVisibility: TimeInterval = 8
     static let endpointPath = "/claude-code"
+    static let permissionPath = "/claude-code/permission"
+    /// How long a request waits in the notch before falling back to the terminal
+    /// prompt. Kept below the hook's own timeout so Claude Code gets an answer.
+    static let permissionWait: TimeInterval = 280
+    static let permissionHookTimeout = 300
     static let tokenHeader = "x-boring-notch-token"
 
     @Published private(set) var sessions: [ClaudeCodeSession] = []
     @Published private(set) var listenerError: String?
     @Published private(set) var isListening = false
+    /// Oldest first; the notch shows the first one.
+    @Published private(set) var pendingPermissions: [ClaudeCodePermissionRequest] = []
+    private var permissionConnections: [UUID: NWConnection] = [:]
+    private var permissionTimeouts: [UUID: Task<Void, Never>] = [:]
+    private var holdsNotchOpen = false
 
     private static let log = Logger(subsystem: "theboringteam.boringnotch", category: "ClaudeCode")
 
@@ -122,6 +151,18 @@ final class ClaudeCodeMonitor: ObservableObject {
             if event == "PreToolUse" { entry["matcher"] = "*" }
             hooks[event] = [entry]
         }
+        // Permission prompts wait for an answer from the notch, so this one is an
+        // HTTP hook whose response carries the decision. If the app isn't running,
+        // the request fails and Claude Code asks in the terminal as usual.
+        hooks["PermissionRequest"] = [[
+            "matcher": "*",
+            "hooks": [[
+                "type": "http",
+                "url": "http://127.0.0.1:\(Defaults[.claudeCodePort])\(permissionPath)",
+                "headers": [tokenHeader: token],
+                "timeout": permissionHookTimeout,
+            ] as [String: Any]],
+        ] as [String: Any]]
         let data = (try? JSONSerialization.data(
             withJSONObject: ["hooks": hooks],
             options: [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
@@ -132,6 +173,7 @@ final class ClaudeCodeMonitor: ObservableObject {
     // MARK: - Listener
 
     private func restart() {
+        resolveAllPermissions(.askInTerminal)
         retryTask?.cancel()
         listener?.cancel()
         listener = nil
@@ -215,6 +257,10 @@ final class ClaudeCodeMonitor: ObservableObject {
                 if let data { buffer.append(data) }
 
                 if let request = HTTPRequest(buffer) {
+                    if request.isAuthorized, request.method == "POST", request.path == Self.permissionPath {
+                        self.enqueuePermission(request, on: connection)
+                        return
+                    }
                     self.handle(request)
                     self.respond(on: connection, status: request.isAuthorized ? "204 No Content" : "403 Forbidden")
                 } else if isComplete || error != nil || buffer.count > 4_194_304 {
@@ -226,9 +272,123 @@ final class ClaudeCodeMonitor: ObservableObject {
         }
     }
 
-    private func respond(on connection: NWConnection, status: String) {
-        let response = Data("HTTP/1.1 \(status)\r\nContent-Length: 0\r\nConnection: close\r\n\r\n".utf8)
+    private func respond(on connection: NWConnection, status: String, json: Data? = nil) {
+        var head = "HTTP/1.1 \(status)\r\nContent-Length: \(json?.count ?? 0)\r\nConnection: close\r\n"
+        if json != nil { head += "Content-Type: application/json\r\n" }
+        var response = Data((head + "\r\n").utf8)
+        if let json { response.append(json) }
         connection.send(content: response, completion: .contentProcessed { _ in connection.cancel() })
+    }
+
+    // MARK: - Permission requests
+
+    private func enqueuePermission(_ request: HTTPRequest, on connection: NWConnection) {
+        guard Defaults[.claudeCodeApprovalsInNotch],
+              let json = try? JSONSerialization.jsonObject(with: request.body) as? [String: Any],
+              let toolName = json["tool_name"] as? String else {
+            respond(on: connection, status: "204 No Content")
+            return
+        }
+        let cwd = json["cwd"] as? String
+        let permission = ClaudeCodePermissionRequest(
+            sessionID: json["session_id"] as? String ?? "",
+            project: cwd.map { URL(fileURLWithPath: $0).lastPathComponent } ?? "Claude Code",
+            toolName: Self.displayName(forTool: toolName),
+            detail: Self.detail(for: toolName, input: json["tool_input"] as? [String: Any] ?? [:], cwd: cwd)
+        )
+        permissionConnections[permission.id] = connection
+        withAnimation(.smooth) { pendingPermissions.append(permission) }
+        updateNotchHold()
+
+        // Claude Code gives up on the hook if the session is interrupted; drop the
+        // request when its connection goes away so the notch doesn't keep asking.
+        watchForDisconnect(connection, request: permission.id)
+        permissionTimeouts[permission.id] = Task { @MainActor [weak self] in
+            try? await Task.sleep(for: .seconds(Self.permissionWait))
+            guard !Task.isCancelled else { return }
+            self?.resolve(permission.id, with: .askInTerminal)
+        }
+    }
+
+    private func watchForDisconnect(_ connection: NWConnection, request id: UUID) {
+        connection.receive(minimumIncompleteLength: 1, maximumLength: 1024) { [weak self] _, _, isComplete, error in
+            Task { @MainActor in
+                guard let self, self.permissionConnections[id] != nil else { return }
+                if isComplete || error != nil {
+                    self.permissionConnections[id] = nil
+                    connection.cancel()
+                    self.resolve(id, with: .askInTerminal)
+                } else {
+                    self.watchForDisconnect(connection, request: id)
+                }
+            }
+        }
+    }
+
+    func resolve(_ id: UUID, with decision: ClaudeCodePermissionDecision) {
+        permissionTimeouts.removeValue(forKey: id)?.cancel()
+        if let connection = permissionConnections.removeValue(forKey: id) {
+            switch decision {
+            case .allow, .deny:
+                var body: [String: Any] = ["behavior": decision == .allow ? "allow" : "deny"]
+                if decision == .deny { body["message"] = "Denied from the notch." }
+                let output = ["hookSpecificOutput": ["hookEventName": "PermissionRequest", "decision": body]]
+                respond(on: connection, status: "200 OK", json: try? JSONSerialization.data(withJSONObject: output))
+            case .askInTerminal:
+                respond(on: connection, status: "204 No Content")
+            }
+        }
+        if let request = pendingPermissions.first(where: { $0.id == id }), decision != .askInTerminal,
+           let index = sessions.firstIndex(where: { $0.id == request.sessionID }) {
+            sessions[index].state = .working
+            sessions[index].updatedAt = Date()
+        }
+        withAnimation(.smooth) { pendingPermissions.removeAll { $0.id == id } }
+        updateNotchHold()
+    }
+
+    private func resolveAllPermissions(_ decision: ClaudeCodePermissionDecision) {
+        for request in pendingPermissions { resolve(request.id, with: decision) }
+    }
+
+    /// Keeps the notch from closing under the pointer while a request is shown.
+    private func updateNotchHold() {
+        let hold = !pendingPermissions.isEmpty
+        guard hold != holdsNotchOpen else { return }
+        holdsNotchOpen = hold
+        if hold {
+            SharingStateManager.shared.beginInteraction()
+        } else {
+            SharingStateManager.shared.endInteraction()
+        }
+    }
+
+    private static func displayName(forTool name: String) -> String {
+        // MCP tools are named mcp__server__tool.
+        let parts = name.components(separatedBy: "__")
+        if parts.count == 3, parts[0] == "mcp" { return "\(parts[2]) (\(parts[1]))" }
+        return name
+    }
+
+    private static func detail(for tool: String, input: [String: Any], cwd: String?) -> String {
+        func relative(_ path: String) -> String {
+            guard let cwd, path.hasPrefix(cwd + "/") else { return path }
+            return String(path.dropFirst(cwd.count + 1))
+        }
+        switch tool {
+        case "Bash":
+            return input["command"] as? String ?? ""
+        case "Edit", "MultiEdit", "Write", "Read", "NotebookEdit":
+            let path = input["file_path"] as? String ?? input["notebook_path"] as? String ?? ""
+            return relative(path)
+        case "WebFetch":
+            return input["url"] as? String ?? ""
+        case "WebSearch":
+            return input["query"] as? String ?? ""
+        default:
+            let data = (try? JSONSerialization.data(withJSONObject: input, options: [.sortedKeys, .withoutEscapingSlashes])) ?? Data()
+            return String(String(decoding: data, as: UTF8.self).prefix(400))
+        }
     }
 
     // MARK: - Hook events

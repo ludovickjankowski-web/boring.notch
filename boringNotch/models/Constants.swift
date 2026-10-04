@@ -539,6 +539,7 @@ extension Defaults.Keys {
     static let enableAIShelf = Key<Bool>("enableAIShelf", default: true)
     static let enableDailyBrief = Key<Bool>("enableDailyBrief", default: true)
     static let enableAssistant = Key<Bool>("enableAssistant", default: true)
+    static let claudeCodeApprovalsInNotch = Key<Bool>("claudeCodeApprovalsInNotch", default: true)
 
     // MARK: Layout
     /// Swaps the opened notch for a smaller, player-only layout: no tab
