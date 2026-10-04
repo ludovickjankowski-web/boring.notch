@@ -15,6 +15,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
     case appearance
     case media
     case calendar
+    case weather
     case shelf
     case timer
     case teleprompter
@@ -41,6 +42,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
         case .appearance: "Appearance"
         case .media: "Media"
         case .calendar: "Calendar"
+        case .weather: "Weather"
         case .shelf: "Shelf"
         case .timer: "Timer"
         case .teleprompter: "Teleprompter"
@@ -62,6 +64,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
         case .appearance: .system("paintbrush")
         case .media: .system("play.rectangle")
         case .calendar: .system("calendar")
+        case .weather: .system("cloud.sun")
         case .shelf: .system("tray.and.arrow.down")
         case .timer: .system("timer")
         case .teleprompter: .system("text.alignleft")
@@ -117,6 +120,8 @@ struct SettingsView: View {
                     ClaudeCodeSettingsView()
                 case .calendar:
                     CalendarSettings()
+                case .weather:
+                    WeatherSettingsView()
                 case .osd:
                     OSDSettings()
                 case .battery:
