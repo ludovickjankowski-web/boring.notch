@@ -182,6 +182,7 @@ struct ContentView: View {
         case hello
         case nowPlayingFallback
         case batteryStatus
+        case bluetoothStatus
         case osd(SneakContentType)
         case activities([LiveActivityItem])
         case face
@@ -195,6 +196,9 @@ struct ContentView: View {
            coordinator.expandingView.type == .battery,
            Defaults[.showPowerStatusNotifications] {
             return .batteryStatus
+        }
+        if showBluetoothActivity {
+            return .bluetoothStatus
         }
         if coordinator.shouldShowSneakPeek(on: vm.screenUUID) {
             return .osd(coordinator.sneakPeekState(for: vm.screenUUID).type)
@@ -212,6 +216,11 @@ struct ContentView: View {
         return .idle
     }
 
+    private var showBluetoothActivity: Bool {
+        coordinator.expandingView.show && coordinator.expandingView.type == .bluetooth
+            && vm.notchState == .closed && Defaults[.showBluetoothAccessories]
+    }
+
     private var computedChinWidth: CGFloat {
         var chinWidth: CGFloat = vm.closedNotchSize.width
 
@@ -219,6 +228,8 @@ struct ContentView: View {
             chinWidth = nowPlayingFallbackNoticeWidth
         } else if coordinator.expandingView.type == .battery && coordinator.expandingView.show
             && vm.notchState == .closed && Defaults[.showPowerStatusNotifications] {
+            chinWidth = 640
+        } else if showBluetoothActivity {
             chinWidth = 640
         } else if vm.notchState == .closed, !vm.hideOnClosed, let activity = selectedActivity {
             // Sized for whichever activity is actually on top, not for
@@ -486,6 +497,9 @@ struct ContentView: View {
                             .frame(width: 76, alignment: .trailing)
                         }
                         .frame(height: displayClosedNotchHeight, alignment: .center)
+                        } else if showBluetoothActivity {
+                            BluetoothAccessoryView()
+                                .transition(.opacity.combined(with: .scale(scale: 0.9)))
                         } else if coordinator.shouldShowSneakPeek(on: vm.screenUUID) && Defaults[.inlineOSD] && (coordinator.sneakPeekState(for: vm.screenUUID).type != .music) && (coordinator.sneakPeekState(for: vm.screenUUID).type != .battery) && vm.notchState == .closed {
                            InlineOSD(
                               type: coordinator.binding(for: vm.screenUUID).type,

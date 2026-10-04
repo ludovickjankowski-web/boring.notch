@@ -140,6 +140,7 @@
 		F38DE6482D8243E7008B5C6D /* BatteryActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */; };
 		B35F18247FA5880E5FCE8357 /* PomodoroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF97A2447F350AB599CED8B /* PomodoroManager.swift */; };
 		6A8AF1C81FF4C1415ADCBC4F /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5012AADEC8FBDC79B257A4 /* PomodoroView.swift */; };
+		D35B5CD87886328EAE585477 /* BluetoothAccessoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -311,6 +312,7 @@
 		F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryActivityManager.swift; sourceTree = "<group>"; };
 		FAF97A2447F350AB599CED8B /* PomodoroManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroManager.swift; sourceTree = "<group>"; };
 		CD5012AADEC8FBDC79B257A4 /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
+		EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothAccessoryManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -579,6 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF97A2447F350AB599CED8B /* PomodoroManager.swift */,
+				EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */,
 				11DB26652EDD0BE1001EA0CF /* LyricsService.swift */,
 				11D58EA12E760AE100FA8377 /* ImageService.swift */,
 				F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */,
@@ -986,6 +989,7 @@
 			files = (
 				6A8AF1C81FF4C1415ADCBC4F /* PomodoroView.swift in Sources */,
 				B35F18247FA5880E5FCE8357 /* PomodoroManager.swift in Sources */,
+				D35B5CD87886328EAE585477 /* BluetoothAccessoryManager.swift in Sources */,
 				115C12EC2ED3D003009754CA /* OpenNotchOSD.swift in Sources */,
 				14C08BB92C8DE4B1000F8AA0 /* BoringCalendar.swift in Sources */,
 				5955950D2E900ED800C66711 /* ApplicationRelauncher.swift in Sources */,
@@ -1339,6 +1343,7 @@
 				INFOPLIST_KEY_LSBackgroundOnly = NO;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "This app uses AppleEvents to control music";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to show when your accessories connect and their battery level";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app uses the calendar to display your calendar events";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to display a live camera view";
 				INFOPLIST_KEY_NSContactsUsageDescription = "This app matches notification senders to your contacts to show their photo";
@@ -1408,6 +1413,7 @@
 				INFOPLIST_KEY_LSBackgroundOnly = NO;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "This app uses AppleEvents to control music";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to show when your accessories connect and their battery level";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app uses the calendar to display your calendar events";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to display a live camera view";
 				INFOPLIST_KEY_NSContactsUsageDescription = "This app matches notification senders to your contacts to show their photo";

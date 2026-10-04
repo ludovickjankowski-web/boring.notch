@@ -511,6 +511,8 @@ extension Defaults.Keys {
     static let pomodoroAutoStartNext = Key<Bool>("pomodoroAutoStartNext", default: false)
     static let pomodoroPlaySound = Key<Bool>("pomodoroPlaySound", default: true)
     static let pomodoroShowInClosedNotch = Key<Bool>("pomodoroShowInClosedNotch", default: true)
+    // MARK: Bluetooth accessories
+    static let showBluetoothAccessories = Key<Bool>("showBluetoothAccessories", default: false)
 
     // MARK: Layout
     /// Swaps the opened notch for a smaller, player-only layout: no tab
