@@ -280,6 +280,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Starts listening for accessory connections when enabled in Settings.
+        _ = BluetoothAccessoryManager.shared
 
         NotificationCenter.default.addObserver(
             self,

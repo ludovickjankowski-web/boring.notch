@@ -177,6 +177,9 @@ extension Defaults.Keys {
     static let showFullEventTitles = Key<Bool>("showFullEventTitles", default: false)
     static let autoScrollToNextEvent = Key<Bool>("autoScrollToNextEvent", default: true)
     
+    // MARK: Bluetooth accessories
+    static let showBluetoothAccessories = Key<Bool>("showBluetoothAccessories", default: false)
+
     // MARK: Pomodoro
     static let enablePomodoro = Key<Bool>("enablePomodoro", default: true)
     static let pomodoroFocusMinutes = Key<Int>("pomodoroFocusMinutes", default: 25)

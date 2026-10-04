@@ -63,6 +63,11 @@ struct ContentView: View {
         musicManager.isPlaying || !musicManager.isPlayerIdle
     }
 
+    private var showBluetoothActivity: Bool {
+        coordinator.expandingView.show && coordinator.expandingView.type == .bluetooth
+            && vm.notchState == .closed && Defaults[.showBluetoothAccessories]
+    }
+
     /// The running timer wins over music; a paused one only shows when nothing is playing.
     private var showPomodoroActivity: Bool {
         guard vm.notchState == .closed, !vm.hideOnClosed,
@@ -79,6 +84,8 @@ struct ContentView: View {
         if coordinator.expandingView.type == .battery && coordinator.expandingView.show
             && vm.notchState == .closed && Defaults[.showPowerStatusNotifications]
         {
+            chinWidth = 640
+        } else if showBluetoothActivity {
             chinWidth = 640
         } else if showPomodoroActivity {
             chinWidth += 2 * PomodoroLiveActivity.sideWidth + 20
@@ -304,6 +311,9 @@ struct ContentView: View {
                       } else if coordinator.sneakPeek.show && Defaults[.inlineHUD] && (coordinator.sneakPeek.type != .music) && (coordinator.sneakPeek.type != .battery) && vm.notchState == .closed {
                           InlineHUD(type: $coordinator.sneakPeek.type, value: $coordinator.sneakPeek.value, icon: $coordinator.sneakPeek.icon, hoverAnimation: $isHovering, gestureProgress: $gestureProgress)
                               .transition(.opacity)
+                      } else if showBluetoothActivity {
+                          BluetoothAccessoryView()
+                              .transition(.opacity.combined(with: .scale(scale: 0.9)))
                       } else if showPomodoroActivity {
                           PomodoroLiveActivity()
                               .transition(.opacity)

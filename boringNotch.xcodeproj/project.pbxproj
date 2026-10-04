@@ -145,6 +145,8 @@
 		F38DE6482D8243E7008B5C6D /* BatteryActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */; };
 		B35F18247FA5880E5FCE8357 /* PomodoroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF97A2447F350AB599CED8B /* PomodoroManager.swift */; };
 		6A8AF1C81FF4C1415ADCBC4F /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5012AADEC8FBDC79B257A4 /* PomodoroView.swift */; };
+		D35B5CD87886328EAE585477 /* BluetoothAccessoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */; };
+		6954E3554C61701CA8BF64B4 /* BluetoothAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F25A4C245F3757006A2FA /* BluetoothAccessoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,6 +315,8 @@
 		F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryActivityManager.swift; sourceTree = "<group>"; };
 		FAF97A2447F350AB599CED8B /* PomodoroManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroManager.swift; sourceTree = "<group>"; };
 		CD5012AADEC8FBDC79B257A4 /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
+		EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothAccessoryManager.swift; sourceTree = "<group>"; };
+		172F25A4C245F3757006A2FA /* BluetoothAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothAccessoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -515,6 +519,7 @@
 		147163B52C5D804B0068B555 /* managers */ = {
 			isa = PBXGroup;
 			children = (
+				EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */,
 				FAF97A2447F350AB599CED8B /* PomodoroManager.swift */,
 				11D58EA12E760AE100FA8377 /* ImageService.swift */,
 				F38DE6472D8243E2008B5C6D /* BatteryActivityManager.swift */,
@@ -736,6 +741,7 @@
 		B18654312C6F45AE000B926A /* Live activities */ = {
 			isa = PBXGroup;
 			children = (
+				172F25A4C245F3757006A2FA /* BluetoothAccessoryView.swift */,
 				115C12EB2ED3D003009754CA /* OpenNotchHUD.swift */,
 				14D570CC2C5F4BB70011E668 /* BoringBattery.swift */,
 				B1C974332C642B6D0000E707 /* MarqueeTextView.swift */,
@@ -919,6 +925,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6954E3554C61701CA8BF64B4 /* BluetoothAccessoryView.swift in Sources */,
+				D35B5CD87886328EAE585477 /* BluetoothAccessoryManager.swift in Sources */,
 				6A8AF1C81FF4C1415ADCBC4F /* PomodoroView.swift in Sources */,
 				B35F18247FA5880E5FCE8357 /* PomodoroManager.swift in Sources */,
 				115C12EC2ED3D003009754CA /* OpenNotchHUD.swift in Sources */,
@@ -1256,6 +1264,7 @@
 				INFOPLIST_KEY_LSBackgroundOnly = NO;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "This app uses AppleEvents to control music";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to show when your accessories connect and their battery level";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app uses the calendar to display your calendar events";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to display a live camera view";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1310,6 +1319,7 @@
 				INFOPLIST_KEY_LSBackgroundOnly = NO;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "This app uses AppleEvents to control music";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to show when your accessories connect and their battery level";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This app uses the calendar to display your calendar events";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to display a live camera view";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
