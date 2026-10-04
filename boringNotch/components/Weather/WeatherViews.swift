@@ -155,6 +155,18 @@ private struct WeatherPopover: View {
                     }
                     .help("Chance of precipitation today")
                 }
+                Label {
+                    Text("\(snapshot.humidity)%")
+                } icon: {
+                    Image(systemName: "humidity.fill")
+                }
+                .help("Humidity")
+                Label {
+                    Text(verbatim: "\(Int(snapshot.windSpeed.rounded())) \(snapshot.windUnit)")
+                } icon: {
+                    Image(systemName: "wind")
+                }
+                .help("Wind")
             }
             .font(.caption)
             .foregroundStyle(.secondary)
