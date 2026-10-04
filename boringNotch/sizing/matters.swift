@@ -13,8 +13,26 @@ let downloadSneakSize: CGSize = .init(width: 65, height: 1)
 let batterySneakSize: CGSize = .init(width: 160, height: 1)
 
 let shadowPadding: CGFloat = 20
-let openNotchSize: CGSize = .init(width: 640, height: 190)
-let windowSize: CGSize = .init(width: openNotchSize.width, height: openNotchSize.height + shadowPadding)
+let defaultOpenNotchSize: CGSize = .init(width: 640, height: 190)
+let openNotchWidthRange: ClosedRange<CGFloat> = 560...820
+let openNotchHeightRange: ClosedRange<CGFloat> = 180...260
+let nonNotchWidthRange: ClosedRange<CGFloat> = 100...260
+
+/// Size of the open notch, as configured in Settings.
+var openNotchSize: CGSize {
+    .init(
+        width: Defaults[.openNotchWidth].clamped(to: openNotchWidthRange),
+        height: Defaults[.openNotchHeight].clamped(to: openNotchHeightRange)
+    )
+}
+
+var windowSize: CGSize { .init(width: openNotchSize.width, height: openNotchSize.height + shadowPadding) }
+
+extension Comparable {
+    func clamped(to range: ClosedRange<Self>) -> Self {
+        min(max(self, range.lowerBound), range.upperBound)
+    }
+}
 let cornerRadiusInsets: (opened: (top: CGFloat, bottom: CGFloat), closed: (top: CGFloat, bottom: CGFloat)) = (opened: (top: 19, bottom: 24), closed: (top: 6, bottom: 14))
 
 enum MusicPlayerImageSizes {
@@ -39,7 +57,7 @@ enum MusicPlayerImageSizes {
 @MainActor func getClosedNotchSize(screenUUID: String? = nil) -> CGSize {
     // Default notch size, to avoid using optionals
     var notchHeight: CGFloat = Defaults[.nonNotchHeight]
-    var notchWidth: CGFloat = 185
+    var notchWidth: CGFloat = Defaults[.nonNotchWidth].clamped(to: nonNotchWidthRange)
 
     var selectedScreen = NSScreen.main
 

@@ -270,6 +270,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.alphaValue = 0
         }
 
+        if window.frame.size != windowSize {
+            window.setContentSize(windowSize)
+        }
+
         let screenFrame = screen.frame
         window.setFrameOrigin(
             NSPoint(
@@ -514,6 +518,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
                     if viewModel.notchState == .closed {
                         viewModel.close()
+                    } else {
+                        viewModel.notchSize = openNotchSize
                     }
                 }
             }
@@ -546,6 +552,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
                 if vm.notchState == .closed {
                     vm.close()
+                } else {
+                    vm.notchSize = openNotchSize
                 }
             }
         }

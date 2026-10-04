@@ -145,6 +145,9 @@ struct GeneralSettings: View {
     @Default(.gestureSensitivity) var gestureSensitivity
     @Default(.minimumHoverDuration) var minimumHoverDuration
     @Default(.nonNotchHeight) var nonNotchHeight
+    @Default(.nonNotchWidth) var nonNotchWidth
+    @Default(.openNotchWidth) var openNotchWidth
+    @Default(.openNotchHeight) var openNotchHeight
     @Default(.nonNotchHeightMode) var nonNotchHeightMode
     @Default(.notchHeight) var notchHeight
     @Default(.notchHeightMode) var notchHeightMode
@@ -260,8 +263,41 @@ struct GeneralSettings: View {
                             name: Notification.Name.notchHeightChanged, object: nil)
                     }
                 }
+                Slider(value: $nonNotchWidth, in: nonNotchWidthRange, step: 5) {
+                    Text("Notch width on non-notch displays - \(nonNotchWidth, specifier: "%.0f")")
+                }
+                .onChange(of: nonNotchWidth) {
+                    NotificationCenter.default.post(
+                        name: Notification.Name.notchHeightChanged, object: nil)
+                }
             } header: {
                 Text("Notch sizing")
+            }
+
+            Section {
+                Slider(value: $openNotchWidth, in: openNotchWidthRange, step: 10) {
+                    Text("Width - \(openNotchWidth, specifier: "%.0f")")
+                }
+                Slider(value: $openNotchHeight, in: openNotchHeightRange, step: 5) {
+                    Text("Height - \(openNotchHeight, specifier: "%.0f")")
+                }
+                Button("Reset to default size") {
+                    openNotchWidth = defaultOpenNotchSize.width
+                    openNotchHeight = defaultOpenNotchSize.height
+                }
+                .disabled(openNotchWidth == defaultOpenNotchSize.width && openNotchHeight == defaultOpenNotchSize.height)
+            } header: {
+                Text("Open notch size")
+            } footer: {
+                Text("Content adapts to the available space. A narrower notch leaves less room for the calendar next to the player.")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+            }
+            .onChange(of: openNotchWidth) {
+                NotificationCenter.default.post(name: Notification.Name.notchHeightChanged, object: nil)
+            }
+            .onChange(of: openNotchHeight) {
+                NotificationCenter.default.post(name: Notification.Name.notchHeightChanged, object: nil)
             }
 
             NotchBehaviour()
