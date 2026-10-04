@@ -44,12 +44,17 @@ final class ClaudeCodeMonitor: ObservableObject {
     private static let log = Logger(subsystem: "theboringteam.boringnotch", category: "ClaudeCode")
 
     private var listener: NWListener?
+    private var retryTask: Task<Void, Never>?
+    private var retryCount = 0
     private var expiryTask: Task<Void, Never>?
     private var cancellables = Set<AnyCancellable>()
 
     private init() {
         _ = Self.token
+        // Both keys emit their initial value at launch; coalesce them so the listener
+        // is started once instead of twice in a row (the second bind would race the first).
         Defaults.publisher(keys: .enableClaudeCodeMonitor, .claudeCodePort)
+            .debounce(for: .milliseconds(150), scheduler: DispatchQueue.main)
             .sink { [weak self] in
                 Task { @MainActor in self?.restart() }
             }
@@ -127,6 +132,7 @@ final class ClaudeCodeMonitor: ObservableObject {
     // MARK: - Listener
 
     private func restart() {
+        retryTask?.cancel()
         listener?.cancel()
         listener = nil
         listenerError = nil
@@ -167,15 +173,33 @@ final class ClaudeCodeMonitor: ObservableObject {
         case .ready:
             isListening = true
             listenerError = nil
+            retryCount = 0
         case .waiting(let error), .failed(let error):
             // `.waiting` is what a refused bind (e.g. port in use) usually looks like,
-            // so surface it instead of silently never listening.
+            // so surface it instead of silently never listening, and retry a few
+            // times in case the port is only briefly held (e.g. right after a relaunch).
             isListening = false
             listenerError = error.localizedDescription
+            scheduleRetry()
         case .cancelled:
             isListening = false
         default:
             break
+        }
+    }
+
+    private func scheduleRetry() {
+        guard retryCount < 5, retryTask == nil || retryTask?.isCancelled == true else { return }
+        retryCount += 1
+        let delay = Double(retryCount)
+        retryTask = Task { @MainActor [weak self] in
+            try? await Task.sleep(for: .seconds(delay))
+            guard let self, !Task.isCancelled, !self.isListening else { return }
+            self.retryTask = nil
+            Self.log.info("retrying listener (attempt \(self.retryCount))")
+            let attempts = self.retryCount
+            self.restart()
+            self.retryCount = attempts
         }
     }
 
