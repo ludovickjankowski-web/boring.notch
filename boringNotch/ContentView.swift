@@ -147,6 +147,7 @@ struct ContentView: View {
     /// lever anyway.
     private var openNotchHeight: CGFloat? {
         if notificationManager.activeNotification != nil { return 132 }
+        if !claudeCode.pendingPermissions.isEmpty { return 150 }
         return Defaults[.compactMode] ? nil : vm.notchSize.height
     }
 
@@ -157,6 +158,7 @@ struct ContentView: View {
     private var showsHeader: Bool {
         vm.notchState == .open
             && notificationManager.activeNotification == nil
+            && claudeCode.pendingPermissions.isEmpty
             && !Defaults[.compactMode]
     }
 
@@ -356,6 +358,15 @@ struct ContentView: View {
                     // even if the user had swiped away to music.
                     .onChange(of: notificationManager.activeNotification?.id) { _, newID in
                         if newID != nil { activityIndex = 0 }
+                    }
+                    // A Claude Code permission request opens the notch to ask, on one
+                    // display only: the one with the menu bar.
+                    .onChange(of: claudeCode.pendingPermissions.first?.id) { _, newID in
+                        guard newID != nil, vm.notchState == .closed,
+                              Defaults[.displayMode] != .allDisplays || vm.screenUUID == NSScreen.main?.displayUUID
+                        else { return }
+                        hoverTask?.cancel()
+                        withAnimation(animationSpring) { _ = vm.open() }
                     }
                     // Activities disappear on their own (a notification
                     // expires, music stops). Keep the selection in range so
@@ -566,7 +577,10 @@ struct ContentView: View {
                 VStack {
                     // An open notch with a live notification is showing the
                     // reply UI — the usual tabs can wait until it's dismissed.
-                    if let notification = notificationManager.activeNotification {
+                    if let permission = claudeCode.pendingPermissions.first {
+                        ClaudeCodePermissionView(request: permission)
+                            .id(permission.id)
+                    } else if let notification = notificationManager.activeNotification {
                         NotificationExpandedView(notification: notification)
                             .id(notification.id)
                     } else if Defaults[.compactMode] {

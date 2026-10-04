@@ -117,3 +117,84 @@ private struct StatusDot: View {
         }
     }
 }
+
+/// Open-notch prompt for a tool call Claude Code wants to make.
+struct ClaudeCodePermissionView: View {
+    let request: ClaudeCodePermissionRequest
+    @ObservedObject var monitor = ClaudeCodeMonitor.shared
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "terminal.fill")
+                    .foregroundStyle(.orange)
+                Text(request.project)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                Text("wants to use \(request.toolName)", comment: "Claude Code permission prompt, e.g. 'wants to use Bash'.")
+                    .foregroundStyle(.gray)
+                    .lineLimit(1)
+                Spacer(minLength: 4)
+                if monitor.pendingPermissions.count > 1 {
+                    Text("+\(monitor.pendingPermissions.count - 1)")
+                        .font(.system(size: 11, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.gray)
+                        .help("More requests are waiting")
+                }
+            }
+            .font(.system(size: 13))
+
+            if !request.detail.isEmpty {
+                ScrollView(.vertical, showsIndicators: false) {
+                    Text(request.detail)
+                        .font(.system(size: 11, design: .monospaced))
+                        .foregroundStyle(Color(white: 0.85))
+                        .textSelection(.enabled)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .frame(maxHeight: 44)
+                .padding(8)
+                .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
+            }
+
+            HStack(spacing: 8) {
+                Button {
+                    monitor.resolve(request.id, with: .askInTerminal)
+                } label: {
+                    Text("Answer in Terminal")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.gray)
+                }
+                .buttonStyle(.plain)
+                .help("Let Claude Code ask in the terminal instead")
+
+                Spacer()
+
+                decisionButton("Deny", systemImage: "xmark", prominent: false) {
+                    monitor.resolve(request.id, with: .deny)
+                }
+                decisionButton("Allow", systemImage: "checkmark", prominent: true) {
+                    monitor.resolve(request.id, with: .allow)
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .frame(maxWidth: 520)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+    }
+
+    private func decisionButton(_ title: LocalizedStringKey, systemImage: String, prominent: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Label(title, systemImage: systemImage)
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(prominent ? .black : .white)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 6)
+                .background(Capsule().fill(prominent ? Color.white : Color.white.opacity(0.14)))
+                .contentShape(Capsule())
+        }
+        .buttonStyle(.plain)
+    }
+}

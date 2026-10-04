@@ -503,6 +503,7 @@ extension Defaults.Keys {
     static let enableClaudeCodeMonitor = Key<Bool>("enableClaudeCodeMonitor", default: false)
     static let claudeCodePort = Key<Int>("claudeCodePort", default: 47821)
     static let claudeCodeToken = Key<String>("claudeCodeToken", default: "")
+    static let claudeCodeApprovalsInNotch = Key<Bool>("claudeCodeApprovalsInNotch", default: true)
 
     // MARK: Layout
     /// Swaps the opened notch for a smaller, player-only layout: no tab

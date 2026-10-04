@@ -35,11 +35,15 @@ struct ClaudeCodeSettingsView: View {
                         .font(.caption)
                     }
                 }
+                Defaults.Toggle(key: .claudeCodeApprovalsInNotch) {
+                    Text("Allow or deny tool requests from the notch")
+                }
+                .disabled(!enabled)
             } header: {
                 Text("General")
             } footer: {
                 Text(
-                    "Each session appears as a dot in the closed notch: green while Claude is working, orange when it needs you, blue when it has finished.",
+                    "Each session appears as a dot in the closed notch: green while Claude is working, orange when it needs you, blue when it has finished. When Claude asks for permission, the notch opens so you can answer; without an answer it falls back to the terminal.",
                     comment: "Footer explaining the Claude Code session indicators."
                 )
                 .foregroundStyle(.secondary)
