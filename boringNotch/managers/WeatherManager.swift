@@ -56,6 +56,10 @@ struct WeatherSnapshot: Equatable {
     let high: Double
     let low: Double
     let precipitationChance: Int?
+    let humidity: Int
+    let windSpeed: Double
+    /// "km/h" or "mph", matching the temperature unit.
+    let windUnit: String
     let hours: [Hour]
     let days: [Day]
     let fetchedAt: Date
@@ -183,17 +187,19 @@ final class WeatherManager: NSObject, ObservableObject {
     // MARK: Open-Meteo
 
     private static func fetchForecast(latitude: Double, longitude: Double, place: String) async throws -> WeatherSnapshot {
+        let imperial = Defaults[.weatherUnit].usesFahrenheit
         var components = URLComponents(string: "https://api.open-meteo.com/v1/forecast")!
         components.queryItems = [
             URLQueryItem(name: "latitude", value: String(format: "%.4f", latitude)),
             URLQueryItem(name: "longitude", value: String(format: "%.4f", longitude)),
-            URLQueryItem(name: "current", value: "temperature_2m,apparent_temperature,weather_code,is_day"),
+            URLQueryItem(name: "current", value: "temperature_2m,apparent_temperature,weather_code,is_day,relative_humidity_2m,wind_speed_10m"),
             URLQueryItem(name: "hourly", value: "temperature_2m,weather_code,is_day"),
             URLQueryItem(name: "daily", value: "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max"),
             URLQueryItem(name: "timezone", value: "auto"),
             URLQueryItem(name: "forecast_days", value: "4"),
             URLQueryItem(name: "timeformat", value: "unixtime"),
-            URLQueryItem(name: "temperature_unit", value: Defaults[.weatherUnit].usesFahrenheit ? "fahrenheit" : "celsius"),
+            URLQueryItem(name: "temperature_unit", value: imperial ? "fahrenheit" : "celsius"),
+            URLQueryItem(name: "wind_speed_unit", value: imperial ? "mph" : "kmh"),
         ]
         var request = URLRequest(url: components.url!)
         request.timeoutInterval = 15
@@ -233,6 +239,9 @@ final class WeatherManager: NSObject, ObservableObject {
             high: today.high,
             low: today.low,
             precipitationChance: today.precipitationChance,
+            humidity: forecast.current.relative_humidity_2m,
+            windSpeed: forecast.current.wind_speed_10m,
+            windUnit: imperial ? "mph" : "km/h",
             hours: Array(hours),
             days: Array(days.dropFirst()),
             fetchedAt: now
@@ -277,6 +286,8 @@ final class WeatherManager: NSObject, ObservableObject {
             let apparent_temperature: Double
             let weather_code: Int
             let is_day: Int
+            let relative_humidity_2m: Int
+            let wind_speed_10m: Double
         }
         struct Hourly: Decodable {
             let time: [TimeInterval]
