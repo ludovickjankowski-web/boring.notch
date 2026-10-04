@@ -145,6 +145,7 @@
 		57F6D56CAC504C51B70FB6B7 /* DailyBriefManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8871A8BBC140405F9FD5813F /* DailyBriefManager.swift */; };
 		CA66EBF9B7234B49BCA609CE /* AssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B675439090B4C7E9B47BDF8 /* AssistantView.swift */; };
 		1614B44AD15443F59A089BC3 /* AssistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E988576C164CA789990E5F /* AssistantManager.swift */; };
+		580E8310E7E343CCAFA64353 /* AssistantTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC119E6D50147CA94A58F70 /* AssistantTools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,6 +322,7 @@
 		8871A8BBC140405F9FD5813F /* DailyBriefManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyBriefManager.swift; sourceTree = "<group>"; };
 		1B675439090B4C7E9B47BDF8 /* AssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantView.swift; sourceTree = "<group>"; };
 		C7E988576C164CA789990E5F /* AssistantManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantManager.swift; sourceTree = "<group>"; };
+		5DC119E6D50147CA94A58F70 /* AssistantTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantTools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -590,6 +592,7 @@
 		147163B52C5D804B0068B555 /* managers */ = {
 			isa = PBXGroup;
 			children = (
+				5DC119E6D50147CA94A58F70 /* AssistantTools.swift */,
 				C7E988576C164CA789990E5F /* AssistantManager.swift */,
 				8871A8BBC140405F9FD5813F /* DailyBriefManager.swift */,
 				C4E520FBBCE34AF4A69FD53E /* AppleIntelligence.swift */,
@@ -1010,6 +1013,7 @@
 				E1E9543D1D09D6B141A4A289 /* TeleprompterView.swift in Sources */,
 				74DC338B8E404B3F825608B2 /* AppleIntelligence.swift in Sources */,
 				57F6D56CAC504C51B70FB6B7 /* DailyBriefManager.swift in Sources */,
+				580E8310E7E343CCAFA64353 /* AssistantTools.swift in Sources */,
 				1614B44AD15443F59A089BC3 /* AssistantManager.swift in Sources */,
 				2407C4824256B704E4A0F7B2 /* TeleprompterManager.swift in Sources */,
 				115C12EC2ED3D003009754CA /* OpenNotchOSD.swift in Sources */,

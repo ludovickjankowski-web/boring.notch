@@ -13,10 +13,12 @@ import FoundationModels
 #endif
 
 struct AssistantMessage: Identifiable, Equatable {
-    enum Role { case user, assistant }
+    enum Role { case user, assistant, action }
     let id = UUID()
     let role: Role
     var text: String
+    /// Set for `.action` messages: what the assistant did, with an Undo.
+    var action: AssistantAction?
 }
 
 @MainActor
@@ -77,6 +79,23 @@ final class AssistantManager: ObservableObject {
         }
     }
 
+    /// Shows an item a tool created, just above the answer being written.
+    func recordAction(_ action: AssistantAction) {
+        let card = AssistantMessage(role: .action, text: action.title, action: action)
+        if isResponding, let last = messages.indices.last, messages[last].role == .assistant {
+            messages.insert(card, at: last)
+        } else {
+            messages.append(card)
+        }
+    }
+
+    func undo(_ messageID: UUID) {
+        guard let index = messages.firstIndex(where: { $0.id == messageID }),
+              let action = messages[index].action, !action.undone,
+              AssistantActions.shared.undo(action) else { return }
+        messages[index].action?.undone = true
+    }
+
     func stop() {
         task?.cancel()
         // The cancelled session may still be finishing its turn; use a fresh one.
@@ -95,10 +114,13 @@ final class AssistantManager: ObservableObject {
         if #available(macOS 26.0, *), AppleIntelligence.isAvailable {
             let session = (self.session as? LanguageModelSession) ?? makeSession()
             self.session = session
-            let stream = session.streamResponse(to: prompt, options: GenerationOptions(temperature: 0.6))
+            let stream = session.streamResponse(
+                to: AssistantActions.dateContext() + prompt,
+                options: GenerationOptions(temperature: 0.6)
+            )
             for try await snapshot in stream {
                 try Task.checkCancellation()
-                if let index = messages.indices.last {
+                if let index = messages.lastIndex(where: { $0.role == .assistant }) {
                     messages[index].text = snapshot.content
                 }
             }
@@ -111,11 +133,17 @@ final class AssistantManager: ObservableObject {
     #if canImport(FoundationModels)
     @available(macOS 26.0, *)
     private func makeSession() -> LanguageModelSession {
-        LanguageModelSession(instructions: """
+        LanguageModelSession(tools: AssistantTools.all, instructions: """
         You are a quick assistant that lives in the notch of the user's Mac. Answer in the user's \
         language (default: \(AppleIntelligence.userLanguageName)). Be brief: a few sentences or a short list. \
         Use plain text with at most light markdown (bold, lists). If you don't know something or it \
         needs live information, say so instead of guessing.
+        Tools: createReminder, createEvent, readCalendar. You cannot see the calendar unless you call \
+        readCalendar, so call it before answering any question about the user's plans, then answer only \
+        from what it returns. When the user asks to be reminded of something or to add something to the \
+        calendar, call the matching tool, then confirm in one short sentence. Each message starts with the \
+        current time and a date table: always take dates from it, never compute them yourself, and don't \
+        mention the table.
         """)
     }
     #endif
