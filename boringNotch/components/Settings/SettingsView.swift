@@ -18,6 +18,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
     case shelf
     case timer
     case teleprompter
+    case intelligence
     case mirror
     case battery
     case osd
@@ -43,6 +44,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
         case .shelf: "Shelf"
         case .timer: "Timer"
         case .teleprompter: "Teleprompter"
+        case .intelligence: "Apple Intelligence"
         case .mirror: "Mirror"
         case .battery: "Battery"
         case .osd: "OSD"
@@ -63,6 +65,7 @@ private enum SettingsTab: String, CaseIterable, Identifiable {
         case .shelf: .system("tray.and.arrow.down")
         case .timer: .system("timer")
         case .teleprompter: .system("text.alignleft")
+        case .intelligence: .system("sparkles")
         case .mirror: .system("video")
         case .battery: .system("battery.100.bolt")
         case .osd: .system("dial.medium.fill")
@@ -124,6 +127,8 @@ struct SettingsView: View {
                     PomodoroSettingsView()
                 case .teleprompter:
                     TeleprompterSettingsView()
+                case .intelligence:
+                    AppleIntelligenceSettingsView()
                 case .mirror:
                     WebcamSettingsView(camera: camera)
                 case .shortcuts:

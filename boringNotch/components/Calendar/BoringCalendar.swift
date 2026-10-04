@@ -478,6 +478,10 @@ struct CalendarView: View {
                 dialHeader
             }
 
+            if Calendar.current.isDateInToday(selectedDate) {
+                DailyBriefLine()
+            }
+
             let filteredEvents = EventListView.filteredEvents(
                 events: calendarManager.events
             )
@@ -498,12 +502,17 @@ struct CalendarView: View {
                 await calendarManager.updateCurrentDate(Date.now)
                 selectedDate = Date.now
             }
+            DailyBriefManager.shared.refreshIfNeeded()
+        }
+        .onChange(of: calendarManager.events) {
+            DailyBriefManager.shared.refreshIfNeeded()
         }
         .onAppear {
             Task {
                 await calendarManager.updateCurrentDate(Date.now)
                 selectedDate = Date.now
             }
+            DailyBriefManager.shared.refreshIfNeeded()
         }
     }
 
@@ -558,6 +567,31 @@ struct CalendarView: View {
             }
         }
         .fixedSize(horizontal: false, vertical: true)
+    }
+}
+
+/// Apple Intelligence summary of what's left today.
+struct DailyBriefLine: View {
+    @ObservedObject private var manager = DailyBriefManager.shared
+    @Default(.enableDailyBrief) private var enabled
+
+    var body: some View {
+        if enabled, let brief = manager.brief {
+            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                Image(systemName: "sparkles")
+                    .font(.system(size: 9, weight: .semibold))
+                    .foregroundStyle(.secondary)
+                Text(brief)
+                    .font(.system(size: 11))
+                    .foregroundStyle(Color(white: 0.75))
+                    .lineLimit(2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(.horizontal, 4)
+            .padding(.top, 4)
+            .help(brief)
+            .transition(.opacity)
+        }
     }
 }
 

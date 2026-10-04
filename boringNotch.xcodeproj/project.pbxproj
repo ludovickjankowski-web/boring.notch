@@ -144,6 +144,11 @@
 		A638D86E39E0E4771FFE6C43 /* ClaudeCodeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86D4703EC96104395B26D /* ClaudeCodeMonitor.swift */; };
 		2407C4824256B704E4A0F7B2 /* TeleprompterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE44E9B278424C7AF50D8D3 /* TeleprompterManager.swift */; };
 		E1E9543D1D09D6B141A4A289 /* TeleprompterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16694E6F9C4EC7C30C48A528 /* TeleprompterView.swift */; };
+		546AFA15EEC04DD384C443AE /* ShelfIntelligenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CB4143D7AE475391AF89F7 /* ShelfIntelligenceService.swift */; };
+		74DC338B8E404B3F825608B2 /* AppleIntelligence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E520FBBCE34AF4A69FD53E /* AppleIntelligence.swift */; };
+		57F6D56CAC504C51B70FB6B7 /* DailyBriefManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8871A8BBC140405F9FD5813F /* DailyBriefManager.swift */; };
+		CA66EBF9B7234B49BCA609CE /* AssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B675439090B4C7E9B47BDF8 /* AssistantView.swift */; };
+		1614B44AD15443F59A089BC3 /* AssistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E988576C164CA789990E5F /* AssistantManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,6 +324,11 @@
 		47D86D4703EC96104395B26D /* ClaudeCodeMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeCodeMonitor.swift; sourceTree = "<group>"; };
 		9FE44E9B278424C7AF50D8D3 /* TeleprompterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterManager.swift; sourceTree = "<group>"; };
 		16694E6F9C4EC7C30C48A528 /* TeleprompterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterView.swift; sourceTree = "<group>"; };
+		21CB4143D7AE475391AF89F7 /* ShelfIntelligenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfIntelligenceService.swift; sourceTree = "<group>"; };
+		C4E520FBBCE34AF4A69FD53E /* AppleIntelligence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIntelligence.swift; sourceTree = "<group>"; };
+		8871A8BBC140405F9FD5813F /* DailyBriefManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyBriefManager.swift; sourceTree = "<group>"; };
+		1B675439090B4C7E9B47BDF8 /* AssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantView.swift; sourceTree = "<group>"; };
+		C7E988576C164CA789990E5F /* AssistantManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -391,6 +401,7 @@
 		1113ABBF2E80E27000EC13B2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				21CB4143D7AE475391AF89F7 /* ShelfIntelligenceService.swift */,
 				1194E87B2EA19E09009C82D6 /* ImageProcessingService.swift */,
 				118EBE282E946B3F00D54B5A /* ShareServiceFinder.swift */,
 				1100292D2E86940F00035A57 /* QuickShareService.swift */,
@@ -566,6 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2CF5CA073212E154A2A160 /* Pomodoro */,
+				478132308515493F89E368DE /* Assistant */,
 				268D06D4E72D68419CF4E71A /* Teleprompter */,
 				11985BDF2F37A3C800F81585 /* OSD */,
 				B141C23B2CA5F50900AC8CC8 /* Onboarding */,
@@ -590,6 +602,9 @@
 				FAF97A2447F350AB599CED8B /* PomodoroManager.swift */,
 				EAD59E0575D63D39D621D2CB /* BluetoothAccessoryManager.swift */,
 				47D86D4703EC96104395B26D /* ClaudeCodeMonitor.swift */,
+				C7E988576C164CA789990E5F /* AssistantManager.swift */,
+				8871A8BBC140405F9FD5813F /* DailyBriefManager.swift */,
+				C4E520FBBCE34AF4A69FD53E /* AppleIntelligence.swift */,
 				9FE44E9B278424C7AF50D8D3 /* TeleprompterManager.swift */,
 				11DB26652EDD0BE1001EA0CF /* LyricsService.swift */,
 				11D58EA12E760AE100FA8377 /* ImageService.swift */,
@@ -818,6 +833,14 @@
 			path = Teleprompter;
 			sourceTree = "<group>";
 		};
+		478132308515493F89E368DE /* Assistant */ = {
+			isa = PBXGroup;
+			children = (
+				1B675439090B4C7E9B47BDF8 /* AssistantView.swift */,
+			);
+			path = Assistant;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1009,6 +1032,9 @@
 				D35B5CD87886328EAE585477 /* BluetoothAccessoryManager.swift in Sources */,
 				A638D86E39E0E4771FFE6C43 /* ClaudeCodeMonitor.swift in Sources */,
 				E1E9543D1D09D6B141A4A289 /* TeleprompterView.swift in Sources */,
+				74DC338B8E404B3F825608B2 /* AppleIntelligence.swift in Sources */,
+				57F6D56CAC504C51B70FB6B7 /* DailyBriefManager.swift in Sources */,
+				1614B44AD15443F59A089BC3 /* AssistantManager.swift in Sources */,
 				2407C4824256B704E4A0F7B2 /* TeleprompterManager.swift in Sources */,
 				115C12EC2ED3D003009754CA /* OpenNotchOSD.swift in Sources */,
 				14C08BB92C8DE4B1000F8AA0 /* BoringCalendar.swift in Sources */,
@@ -1052,6 +1078,7 @@
 				1113ABCB2E80E27000EC13B2 /* QuickLookService.swift in Sources */,
 				1113ABCC2E80E27000EC13B2 /* ShelfDropService.swift in Sources */,
 				1100292E2E86940F00035A57 /* QuickShareService.swift in Sources */,
+				546AFA15EEC04DD384C443AE /* ShelfIntelligenceService.swift in Sources */,
 				1113ABCE2E80E27000EC13B2 /* ShelfActionService.swift in Sources */,
 				1160F8D82DD98230006FBB94 /* NotchShape.swift in Sources */,
 				5917FD112E57891600E87F1C /* MediaKeyInterceptor.swift in Sources */,
@@ -1084,6 +1111,7 @@
 				80EA0C01BBCF4069AC5D133D /* AppleScriptControllerSupport.swift in Sources */,
 				110029272E84FD4C00035A57 /* TemporaryFileStorageService.swift in Sources */,
 				11CFC6652E09C7B300748C80 /* OnboardingFinishView.swift in Sources */,
+				CA66EBF9B7234B49BCA609CE /* AssistantView.swift in Sources */,
 				507266DB2C908E2E00A2D00D /* HoverButton.swift in Sources */,
 				1A8B65187F974EE9B7664F5C /* VisualEffectView.swift in Sources */,
 				14CEF4182C5CAED300855D72 /* ContentView.swift in Sources */,

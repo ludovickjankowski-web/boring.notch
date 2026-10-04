@@ -676,6 +676,16 @@ struct ContentView: View {
                                     isHoveringMusicArea: $isHoveringMusicArea
                                 )
                             }
+                        case .assistant:
+                            if AssistantManager.shared.isAvailable {
+                                AssistantView()
+                            } else {
+                                NotchHomeView(
+                                    albumArtNamespace: albumArtNamespace,
+                                    horizontalMediaGestureFeedback: horizontalMediaGestureFeedback,
+                                    isHoveringMusicArea: $isHoveringMusicArea
+                                )
+                            }
                         }
                     }
                 }
