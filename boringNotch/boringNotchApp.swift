@@ -152,6 +152,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         return false
     }
 
+    @MainActor
+    func applicationShouldHandleReopen(
+        _ sender: NSApplication,
+        hasVisibleWindows flag: Bool
+    ) -> Bool {
+        SettingsWindowController.shared.showWindow()
+        return false
+    }
+
     func applicationWillTerminate(_ notification: Notification) {
         if LegacyAppBundleMigration.isRelaunching { return }
 
@@ -218,6 +227,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 self?.windowManager.setupDragDetectors()
             }
         })
+
+        // The narrowest allowed open notch depends on these, so the window may
+        // need to grow when one is turned on.
+        observers.append(Defaults.publisher(keys: .showCalendar, .showMirror, options: [])
+            .sink { _ in
+                NotificationCenter.default.post(name: Notification.Name.notchHeightChanged, object: nil)
+            })
 
         observers.append(NotificationCenter.default.addObserver(
             forName: Notification.Name.notchHeightChanged, object: nil, queue: nil
