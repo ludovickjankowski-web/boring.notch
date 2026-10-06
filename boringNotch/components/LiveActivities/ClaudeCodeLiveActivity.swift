@@ -5,6 +5,7 @@
 //  Closed-notch status for Claude Code sessions reported by ClaudeCodeMonitor.
 //
 
+import AppKit
 import SwiftUI
 
 extension ClaudeCodeSessionState {
@@ -95,26 +96,44 @@ struct ClaudeCodeLiveActivity: View {
     }
 }
 
-private struct StatusDot: View {
+/// A session's status dot. The "working" pulse is a Core Animation layer
+/// animation: it runs in the render server, whereas a SwiftUI
+/// `repeatForever` animation re-renders the whole notch view graph every
+/// frame (~9% CPU for as long as Claude works).
+private struct StatusDot: NSViewRepresentable {
     let color: Color
     let pulsing: Bool
-    @State private var dimmed = false
 
-    var body: some View {
-        Circle()
-            .fill(color)
-            .frame(width: 7, height: 7)
-            .opacity(pulsing && dimmed ? 0.35 : 1)
-            .onAppear { updateAnimation() }
-            .onChange(of: pulsing) { updateAnimation() }
+    private static let pulseKey = "pulse"
+
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView(frame: NSRect(x: 0, y: 0, width: 7, height: 7))
+        view.wantsLayer = true
+        view.layer?.cornerRadius = 3.5
+        return view
     }
 
-    private func updateAnimation() {
-        if pulsing {
-            withAnimation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true)) { dimmed = true }
-        } else {
-            withAnimation(.smooth) { dimmed = false }
+    func updateNSView(_ view: NSView, context: Context) {
+        guard let layer = view.layer else { return }
+        layer.backgroundColor = NSColor(color).cgColor
+        let isPulsing = layer.animation(forKey: Self.pulseKey) != nil
+        if pulsing && !isPulsing {
+            let pulse = CABasicAnimation(keyPath: "opacity")
+            pulse.fromValue = 1
+            pulse.toValue = 0.35
+            pulse.duration = 0.8
+            pulse.autoreverses = true
+            pulse.repeatCount = .infinity
+            pulse.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            pulse.isRemovedOnCompletion = false
+            layer.add(pulse, forKey: Self.pulseKey)
+        } else if !pulsing && isPulsing {
+            layer.removeAnimation(forKey: Self.pulseKey)
         }
+    }
+
+    func sizeThatFits(_ proposal: ProposedViewSize, nsView: NSView, context: Context) -> CGSize? {
+        CGSize(width: 7, height: 7)
     }
 }
 
