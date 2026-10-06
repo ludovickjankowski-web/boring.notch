@@ -183,6 +183,9 @@ struct NotchSettingsView: View {
             Defaults.Toggle(key: .enableHaptics) {
                 Text("Enable haptic feedback")
             }
+            Defaults.Toggle(key: .showActivityBubbles) {
+                Text("Show other activities as bubbles beside the notch")
+            }
             Toggle("Remember last tab", isOn: $coordinator.openLastTabByDefault)
             if openNotchOnHover {
                 Slider(value: $minimumHoverDuration, in: 0...1, step: 0.1) {

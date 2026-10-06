@@ -205,6 +205,20 @@ struct ContentView: View {
             && !Defaults[.compactMode]
     }
 
+    /// Activities that aren't in front, shown as bubbles next to the closed
+    /// pill (at most two, and only as many as fit in the window).
+    private var bubbleItems: [LiveActivityItem] {
+        guard Defaults[.showActivityBubbles], vm.notchState == .closed, !vm.hideOnClosed,
+              case .activities(let items) = closedNotchContent, items.count > 1,
+              let selected = selectedActivity else { return [] }
+        let others = items.filter { $0 != selected }
+        let room = windowSize.width / 2 - computedChinWidth / 2 - ActivityBubbles.gap
+        let fitting = (0...min(2, others.count)).last {
+            ActivityBubbles.width(count: $0, notchHeight: displayClosedNotchHeight) <= room
+        } ?? 0
+        return Array(others.prefix(fitting))
+    }
+
     /// The activity currently on top of the stack — what the chin has to be
     /// sized for.
     private var selectedActivity: LiveActivityItem? {
@@ -333,6 +347,18 @@ struct ContentView: View {
         }()
 
         ZStack(alignment: .top) {
+            // The other running activities, as bubbles beside the closed pill.
+            let bubbles = bubbleItems
+            if !bubbles.isEmpty {
+                ActivityBubbles(items: bubbles, notchHeight: displayClosedNotchHeight) { item in
+                    guard let index = liveActivities.firstIndex(of: item) else { return }
+                    withAnimation(.smooth(duration: 0.3)) { activityIndex = index }
+                }
+                .offset(x: computedChinWidth / 2 + ActivityBubbles.gap
+                    + ActivityBubbles.width(count: bubbles.count, notchHeight: displayClosedNotchHeight) / 2)
+                .transition(.scale(scale: 0.3).combined(with: .opacity))
+                .zIndex(2)
+            }
             VStack(spacing: 0) {
                 let mainLayout = NotchLayout()
                     .frame(alignment: .top)

@@ -506,6 +506,9 @@ extension Defaults.Keys {
     static let selectedDownloadIndicatorStyle = Key<DownloadIndicatorStyle>("selectedDownloadIndicatorStyle", default: DownloadIndicatorStyle.progress)
     static let selectedDownloadIconStyle = Key<DownloadIconStyle>("selectedDownloadIconStyle", default: DownloadIconStyle.onlyAppIcon)
 
+    // MARK: Activity bubbles
+    static let showActivityBubbles = Key<Bool>("showActivityBubbles", default: true)
+
     // MARK: Weather
     static let showWeather = Key<Bool>("showWeather", default: false)
     static let weatherUseCurrentLocation = Key<Bool>("weatherUseCurrentLocation", default: true)
