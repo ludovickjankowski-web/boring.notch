@@ -2385,11 +2385,23 @@
     },
     "Applies to the standard layout; compact mode sizes itself to its content." : {
       "comment" : "Footer explaining that the open notch size setting does not affect compact mode.",
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "S'applique à la disposition standard ; le mode compact s'adapte à son contenu."
+          }
+        }
+      }
+    },
+    "Applies to the standard layout; compact mode sizes itself to its content. The notch can be narrower than 560 when the calendar and the mirror are off." : {
+      "comment" : "Footer explaining that the open notch size setting does not affect compact mode, and when it can be narrower.",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S'applique à la disposition standard ; le mode compact s'adapte à son contenu. L'encoche peut être plus étroite que 560 quand le calendrier et le miroir sont désactivés."
           }
         }
       }
@@ -18422,6 +18434,16 @@
         }
       }
     },
+    "Music" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musique"
+          }
+        }
+      }
+    },
     "Music Source" : {
       "localizations" : {
         "cs" : {
@@ -20356,6 +20378,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plus rien dans votre calendrier aujourd'hui."
+          }
+        }
+      }
+    },
+    "Notification" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification"
           }
         }
       }
@@ -27499,6 +27531,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "喺打開嘅劉海中顯示 OSD"
+          }
+        }
+      }
+    },
+    "Show other activities as bubbles beside the notch" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les autres activités en bulles à côté de l'encoche"
           }
         }
       }
