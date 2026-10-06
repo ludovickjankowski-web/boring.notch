@@ -852,7 +852,8 @@ struct ContentView: View {
                                 color: Defaults[.coloredSpectrogram]
                                     ? Color(nsColor: musicManager.avgColor) : Color.gray,
                                 delayDuration: 0.4,
-                                frameWidth: inlineMusicPeekLabelWidth
+                                frameWidth: inlineMusicPeekLabelWidth,
+                                loops: !showingPersistentMusicPeek
                             )
                             Spacer(minLength: vm.closedNotchSize.width)
                             // Song Artist
