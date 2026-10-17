@@ -90,10 +90,34 @@ struct ContentView: View {
         if #available(macOS 26.0, *), usesLiquidGlass {
             Color.clear
                 .glassEffect(.regular.tint(.black.opacity(liquidGlassTint)), in: currentNotchShape)
+                .overlay { glassTopFade }
                 .transition(.opacity)
         } else {
             Color.black
         }
+    }
+
+    /// Solid black over the hardware cutout, then an eased fade to the glass.
+    /// Without it the camera housing shows through the translucent panel as a
+    /// black block that doesn't line up with the notch's own shape.
+    private var glassTopFade: some View {
+        GeometryReader { proxy in
+            let height = max(proxy.size.height, 1)
+            let solid = min(vm.closedNotchSize.height / height, 1)
+            let fadeEnd = min(solid + 0.55, 1)
+            LinearGradient(
+                stops: [
+                    .init(color: .black, location: 0),
+                    .init(color: .black, location: solid),
+                    .init(color: .black.opacity(0.75), location: solid + (fadeEnd - solid) * 0.25),
+                    .init(color: .black.opacity(0.35), location: solid + (fadeEnd - solid) * 0.6),
+                    .init(color: .clear, location: fadeEnd),
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        }
+        .allowsHitTesting(false)
     }
 
     private var currentNotchShape: NotchShape {
